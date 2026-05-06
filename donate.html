@@ -4,15 +4,16 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Donate — The Bright Knight Foundation</title>
-  <link href="assets/img/bright-knights-logo.jpg" rel="icon">
+  <link href="assets/img/bright-knights-logo.webp" rel="icon">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" href="assets/vendor/bootstrap-icons/fonts/bootstrap-icons.woff2?dd67030699838ea613ee6dbda90effa6" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/img/bright-knights-logo.webp" as="image">
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
   <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
   <link href="assets/vendor/aos/aos.css" rel="stylesheet">
   <link href="assets/css/main.css" rel="stylesheet">
-  <link href="assets/css/bk-revamp.css" rel="stylesheet">
 </head>
 <body>
 
@@ -20,7 +21,7 @@
   <header id="header" class="header fixed-top d-flex align-items-center">
     <div class="container d-flex align-items-center justify-content-between">
       <a href="index.html" class="logo d-flex align-items-center me-auto me-lg-0">
-        <img src="assets/img/bright-knights-logo.jpg" alt="">
+        <img src="assets/img/bright-knights-logo.webp" alt="" fetchpriority="high">
         <h1>The Bright Knight Foundation<span>.</span></h1>
       </a>
       <nav id="navbar" class="navbar">
@@ -108,7 +109,7 @@
 
             <!-- QRIS Code -->
             <div style="text-align:center; margin-bottom:24px;">
-              <img src="assets/img/QRIS%20TBKF.jpeg" alt="QRIS Donation Code — The Bright Knight Foundation" style="width:100%; max-width:260px; border-radius:12px; border:1px solid #eee; box-shadow:0 4px 16px rgba(0,0,0,0.08);">
+              <img src="assets/img/QRIS%20TBKF.webp" alt="QRIS Donation Code — The Bright Knight Foundation" style="width:100%; max-width:260px; border-radius:12px; border:1px solid #eee; box-shadow:0 4px 16px rgba(0,0,0,0.08);">
               <div style="margin-top:12px; font-size:12px; color:var(--bk-muted); line-height:1.6;">Compatible with GoPay, OVO, Dana, ShopeePay,<br>BCA Mobile, Mandiri, BRI, and all QRIS apps</div>
             </div>
 
@@ -219,7 +220,7 @@
           </div>
 
           <div class="col-lg-5 offset-lg-1" data-aos="fade-left">
-            <img src="assets/img/season2/rodeo-s2-1/r1-4.jpg" alt="TBKF outreach event"
+            <img src="assets/img/season2/rodeo-s2-1/r1-4.webp" alt="TBKF outreach event"
                  class="img-fluid rounded-4 shadow-lg" style="width:100%; object-fit:cover; max-height:380px;">
           </div>
 
@@ -267,9 +268,9 @@
   <a href="#" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
   <div id="preloader"></div>
 
-  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/vendor/aos/aos.js"></script>
-  <script src="assets/js/main.js"></script>
+  <script defer src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script defer src="assets/vendor/aos/aos.js"></script>
+  <script defer src="assets/js/main.js"></script>
   <script>
   document.querySelectorAll('.dropdown-submenu > a').forEach(function(link) {
     link.addEventListener('click', function(e) {

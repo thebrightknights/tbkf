@@ -4,23 +4,24 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Season 2 — Health &amp; Wellness · The Bright Knight Foundation</title>
-  <link href="../assets/img/bright-knights-logo.jpg" rel="icon">
+  <link href="../assets/img/bright-knights-logo.webp" rel="icon">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" href="../assets/vendor/bootstrap-icons/fonts/bootstrap-icons.woff2?dd67030699838ea613ee6dbda90effa6" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="../assets/img/bright-knights-logo.webp" as="image">
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
   <link href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <link href="../assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
   <link href="../assets/vendor/aos/aos.css" rel="stylesheet">
   <link href="../assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
   <link href="../assets/css/main.css" rel="stylesheet">
-  <link href="../assets/css/bk-revamp.css" rel="stylesheet">
 </head>
 <body>
 
   <header id="header" class="header fixed-top d-flex align-items-center">
     <div class="container d-flex align-items-center justify-content-between">
       <a href="../index.html" class="logo d-flex align-items-center me-auto me-lg-0">
-        <img src="../assets/img/bright-knights-logo.jpg" alt="">
+        <img src="../assets/img/bright-knights-logo.webp" alt="" fetchpriority="high">
         <h1>The Bright Knight Foundation<span>.</span></h1>
       </a>
       <nav id="navbar" class="navbar">
@@ -233,10 +234,10 @@
 
   <a href="#" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
   <div id="preloader"></div>
-  <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="../assets/vendor/aos/aos.js"></script>
-  <script src="../assets/vendor/glightbox/js/glightbox.min.js"></script>
-  <script src="../assets/js/main.js"></script>
+  <script defer src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script defer src="../assets/vendor/aos/aos.js"></script>
+  <script defer src="../assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script defer src="../assets/js/main.js"></script>
   <script>
   (function () {
     const links = document.querySelectorAll('.program-sidebar a[href^="#"]');

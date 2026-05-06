@@ -4,23 +4,24 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Young Knights — Season 1 · The Bright Knight Foundation</title>
-  <link href="../assets/img/bright-knights-logo.jpg" rel="icon">
+  <link href="../assets/img/bright-knights-logo.webp" rel="icon">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" href="../assets/vendor/bootstrap-icons/fonts/bootstrap-icons.woff2?dd67030699838ea613ee6dbda90effa6" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="../assets/img/bright-knights-logo.webp" as="image">
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
   <link href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <link href="../assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
   <link href="../assets/vendor/aos/aos.css" rel="stylesheet">
   <link href="../assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
   <link href="../assets/css/main.css" rel="stylesheet">
-  <link href="../assets/css/bk-revamp.css" rel="stylesheet">
 </head>
 <body>
 
   <header id="header" class="header fixed-top d-flex align-items-center">
     <div class="container d-flex align-items-center justify-content-between">
       <a href="../index.html" class="logo d-flex align-items-center me-auto me-lg-0">
-        <img src="../assets/img/bright-knights-logo.jpg" alt="">
+        <img src="../assets/img/bright-knights-logo.webp" alt="" fetchpriority="high">
         <h1>The Bright Knight Foundation<span>.</span></h1>
       </a>
       <nav id="navbar" class="navbar">
@@ -203,11 +204,11 @@
               <iframe style="border:none; width:100%; height:100%;" src="https://maps.google.com/maps?q=De+Jaksa+Jakarta+Central+Jakarta&output=embed" allowfullscreen loading="lazy"></iframe>
             </div>
             <div class="event-photo-grid grid-2 mb-3">
-              <a href="../assets/img/season1/youngknights/Law%20School%20%23101/yk-law.jpg" class="glightbox" data-gallery="yk-law">
-                <img src="../assets/img/season1/youngknights/Law%20School%20%23101/yk-law.jpg" alt="Law School #101 Moot Court">
+              <a href="../assets/img/season1/youngknights/Law%20School%20%23101/yk-law.webp" class="glightbox" data-gallery="yk-law">
+                <img src="../assets/img/season1/youngknights/Law%20School%20%23101/yk-law.webp" alt="Law School #101 Moot Court">
               </a>
-              <a href="../assets/img/season1/youngknights/Law%20School%20%23101/yk-law2.jpg" class="glightbox" data-gallery="yk-law">
-                <img src="../assets/img/season1/youngknights/Law%20School%20%23101/yk-law2.jpg" alt="Law School #101 guests">
+              <a href="../assets/img/season1/youngknights/Law%20School%20%23101/yk-law2.webp" class="glightbox" data-gallery="yk-law">
+                <img src="../assets/img/season1/youngknights/Law%20School%20%23101/yk-law2.webp" alt="Law School #101 guests">
               </a>
             </div>
             <div style="margin-bottom:20px;">
@@ -318,11 +319,11 @@
               <span class="event-badge completed"><span class="ev-dot"></span> Completed</span>
             </div>
             <div class="event-photo-grid grid-2 mb-3">
-              <a href="../assets/img/season1/youngknights/medicine/yk-medicine.jpg" class="glightbox" data-gallery="yk-med">
-                <img src="../assets/img/season1/youngknights/medicine/yk-medicine.jpg" alt="YoungKnights Medicine skills">
+              <a href="../assets/img/season1/youngknights/medicine/yk-medicine.webp" class="glightbox" data-gallery="yk-med">
+                <img src="../assets/img/season1/youngknights/medicine/yk-medicine.webp" alt="YoungKnights Medicine skills">
               </a>
-              <a href="../assets/img/season1/youngknights/medicine/yk-medicine2.jpg" class="glightbox" data-gallery="yk-med">
-                <img src="../assets/img/season1/youngknights/medicine/yk-medicine2.jpg" alt="YoungKnights Medicine suturing">
+              <a href="../assets/img/season1/youngknights/medicine/yk-medicine2.webp" class="glightbox" data-gallery="yk-med">
+                <img src="../assets/img/season1/youngknights/medicine/yk-medicine2.webp" alt="YoungKnights Medicine suturing">
               </a>
             </div>
             <div style="margin-bottom:20px;">
@@ -395,10 +396,10 @@
 
   <a href="#" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
   <div id="preloader"></div>
-  <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="../assets/vendor/aos/aos.js"></script>
-  <script src="../assets/vendor/glightbox/js/glightbox.min.js"></script>
-  <script src="../assets/js/main.js"></script>
+  <script defer src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script defer src="../assets/vendor/aos/aos.js"></script>
+  <script defer src="../assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script defer src="../assets/js/main.js"></script>
   <script>
   (function () {
     const links = document.querySelectorAll('.program-sidebar a[href^="#"]');

@@ -766,7 +766,7 @@
   }
   .why-us .icon-box {
     text-align: center;
-    background-image: url('maths.jpg');
+    background-image: url('maths.webp');
     background-repeat: no-repeat; 
     background-size: cover;
     padding: 40px 30px;
@@ -812,7 +812,7 @@
   }
   
   .stats-counter {
-    background: linear-gradient(rgba(181, 81, 0, 0.5), rgba(136, 136, 136, 0.5)), url("../img/stats-bg.jpg") center center;
+    background: linear-gradient(rgba(181, 81, 0, 0.5), rgba(136, 136, 136, 0.5)), url("../img/stats-bg.webp") center center;
     background-size: cover;
     background-repeat: no-repeat;
     padding: 100px 0;
@@ -962,7 +962,7 @@
     border-radius: 50%;
     border: 4px solid #fff;
     margin: 0 auto;
-    background-image: url('capede.jpg');
+    background-image: url('capede.webp');
     background-repeat: repeat;
     background-size: cover;
   }

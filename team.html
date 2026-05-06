@@ -4,15 +4,16 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Our Team. The Bright Knight Foundation 2026/2027</title>
-  <link href="assets/img/bright-knights-logo.jpg" rel="icon">
+  <link href="assets/img/bright-knights-logo.webp" rel="icon">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" href="assets/vendor/bootstrap-icons/fonts/bootstrap-icons.woff2?dd67030699838ea613ee6dbda90effa6" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/img/bright-knights-logo.webp" as="image">
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
   <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
   <link href="assets/vendor/aos/aos.css" rel="stylesheet">
   <link href="assets/css/main.css" rel="stylesheet">
-  <link href="assets/css/bk-revamp.css" rel="stylesheet">
   <style>
     .member-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 20px; }
     @media (max-width: 576px) { .member-grid { grid-template-columns: repeat(2, 1fr); gap: 14px; } }
@@ -24,7 +25,7 @@
   <header id="header" class="header fixed-top d-flex align-items-center">
     <div class="container d-flex align-items-center justify-content-between">
       <a href="index.html" class="logo d-flex align-items-center me-auto me-lg-0">
-        <img src="assets/img/bright-knights-logo.jpg" alt="">
+        <img src="assets/img/bright-knights-logo.webp" alt="" fetchpriority="high">
         <h1>The Bright Knight Foundation<span>.</span></h1>
       </a>
       <nav id="navbar" class="navbar">
@@ -99,7 +100,7 @@
         <div class="member-grid mb-3" data-aos="fade-up">
 
           <div class="member-card core-card">
-            <img src="assets/img/team/core/denis.jpg" class="member-photo" alt="Denisson Setiawan Tanuraharja">
+            <img src="assets/img/team/core/denis.webp" class="member-photo" alt="Denisson Setiawan Tanuraharja">
             <div class="member-info">
               <span class="role-badge">1st Chair</span>
               <h5>Denisson Setiawan Tanuraharja</h5>
@@ -107,7 +108,7 @@
           </div>
 
           <div class="member-card core-card">
-            <img src="assets/img/team/core/dyo.jpg" class="member-photo" alt="Raffael Narendra Pramudyasatrio">
+            <img src="assets/img/team/core/dyo.webp" class="member-photo" alt="Raffael Narendra Pramudyasatrio">
             <div class="member-info">
               <span class="role-badge">2nd Chair</span>
               <h5>Raffael Narendra Pramudyasatrio</h5>
@@ -115,7 +116,7 @@
           </div>
 
           <div class="member-card core-card">
-            <img src="assets/img/team/core/patrick.jpg" class="member-photo" alt="Patrick Polana Kho">
+            <img src="assets/img/team/core/patrick.webp" class="member-photo" alt="Patrick Polana Kho">
             <div class="member-info">
               <span class="role-badge">Secretary I</span>
               <h5>Patrick Polana Kho</h5>
@@ -123,7 +124,7 @@
           </div>
 
           <div class="member-card core-card">
-            <img src="assets/img/team/core/gmf.jpg" class="member-photo" alt="Gerald Matteo">
+            <img src="assets/img/team/core/gmf.webp" class="member-photo" alt="Gerald Matteo">
             <div class="member-info">
               <span class="role-badge">Secretary II</span>
               <h5>Gerald Matteo</h5>
@@ -145,7 +146,7 @@
         <div class="member-grid mb-3" data-aos="fade-up">
 
           <div class="member-card core-card">
-            <img src="assets/img/team/core/hadriel.jpg" class="member-photo" alt="Hadriel Avanandra Sitorus">
+            <img src="assets/img/team/core/hadriel.webp" class="member-photo" alt="Hadriel Avanandra Sitorus">
             <div class="member-info">
               <span class="role-badge">Coordinator</span>
               <h5>Hadriel Avanandra Sitorus</h5>
@@ -153,7 +154,7 @@
           </div>
 
           <div class="member-card core-card">
-            <img src="assets/img/team/members/enrico.jpg" class="member-photo" alt="Enrico Rudh">
+            <img src="assets/img/team/members/enrico.webp" class="member-photo" alt="Enrico Rudh">
             <div class="member-info">
               <span class="role-badge">Treasurer</span>
               <h5>Enrico Rudh</h5>
@@ -161,7 +162,7 @@
           </div>
 
           <div class="member-card core-card">
-            <img src="assets/img/team/members/nicholas.jpg" class="member-photo" alt="Nicholas Feivel Sudarno">
+            <img src="assets/img/team/members/nicholas.webp" class="member-photo" alt="Nicholas Feivel Sudarno">
             <div class="member-info">
               <span class="role-badge">Auxiliary</span>
               <h5>Nicholas Feivel Sudarno</h5>
@@ -169,7 +170,7 @@
           </div>
 
           <div class="member-card core-card">
-            <img src="assets/img/team/members/naveen.jpg" class="member-photo" alt="Naveen Xavier Dante">
+            <img src="assets/img/team/members/naveen.webp" class="member-photo" alt="Naveen Xavier Dante">
             <div class="member-info">
               <span class="role-badge">Auxiliary</span>
               <h5>Naveen Xavier Dante</h5>
@@ -177,7 +178,7 @@
           </div>
 
           <div class="member-card core-card">
-            <img src="assets/img/team/members/darren.jpg" class="member-photo" alt="Darren Shanahan Hutagalung">
+            <img src="assets/img/team/members/darren.webp" class="member-photo" alt="Darren Shanahan Hutagalung">
             <div class="member-info">
               <span class="role-badge">Auxiliary</span>
               <h5>Darren Shanahan Hutagalung</h5>
@@ -193,7 +194,7 @@
           </div>
 
           <div class="member-card core-card">
-            <img src="assets/img/team/members/mikhael.jpg" class="member-photo" alt="Mikhael Rasendriya Aryasatya">
+            <img src="assets/img/team/members/mikhael.webp" class="member-photo" alt="Mikhael Rasendriya Aryasatya">
             <div class="member-info">
               <span class="role-badge">Auxiliary</span>
               <h5>Mikhael Rasendriya Aryasatya</h5>
@@ -215,7 +216,7 @@
         <div class="member-grid mb-3" data-aos="fade-up">
 
           <div class="member-card core-card">
-            <img src="assets/img/team/core/naya.jpg" class="member-photo" alt="Kanaya Shira Dannelle">
+            <img src="assets/img/team/core/naya.webp" class="member-photo" alt="Kanaya Shira Dannelle">
             <div class="member-info">
               <span class="role-badge">Coordinator</span>
               <h5>Kanaya Shira Dannelle</h5>
@@ -223,7 +224,7 @@
           </div>
 
           <div class="member-card core-card">
-            <img src="assets/img/team/members/elisabeth.jpg" class="member-photo" alt="Elisabeth Kinga Wirawan">
+            <img src="assets/img/team/members/elisabeth.webp" class="member-photo" alt="Elisabeth Kinga Wirawan">
             <div class="member-info">
               <span class="role-badge">Auxiliary</span>
               <h5>Elisabeth Kinga Wirawan</h5>
@@ -231,7 +232,7 @@
           </div>
 
           <div class="member-card core-card">
-            <img src="assets/img/team/members/johannes.jpg" class="member-photo" alt="Johannes Otniel Tonggo Saragih">
+            <img src="assets/img/team/members/johannes.webp" class="member-photo" alt="Johannes Otniel Tonggo Saragih">
             <div class="member-info">
               <span class="role-badge">Auxiliary</span>
               <h5>Johannes Otniel Tonggo Saragih</h5>
@@ -239,7 +240,7 @@
           </div>
 
           <div class="member-card core-card">
-            <img src="assets/img/team/members/nathaniel.jpg" class="member-photo" alt="Nathaniel Widiyanto">
+            <img src="assets/img/team/members/nathaniel.webp" class="member-photo" alt="Nathaniel Widiyanto">
             <div class="member-info">
               <span class="role-badge">Auxiliary</span>
               <h5>Nathaniel Widiyanto</h5>
@@ -247,7 +248,7 @@
           </div>
 
           <div class="member-card core-card">
-            <img src="assets/img/team/members/callysta-feodora.jpg" class="member-photo" alt="Callysta Feodora Sitorus">
+            <img src="assets/img/team/members/callysta-feodora.webp" class="member-photo" alt="Callysta Feodora Sitorus">
             <div class="member-info">
               <span class="role-badge">Auxiliary</span>
               <h5>Callysta Feodora Sitorus</h5>
@@ -263,7 +264,7 @@
           </div>
 
           <div class="member-card core-card">
-            <img src="assets/img/team/members/marsha.jpg" class="member-photo" alt="Marsha Victoria Setiawan">
+            <img src="assets/img/team/members/marsha.webp" class="member-photo" alt="Marsha Victoria Setiawan">
             <div class="member-info">
               <span class="role-badge">Auxiliary</span>
               <h5>Marsha Victoria Setiawan</h5>
@@ -271,7 +272,7 @@
           </div>
 
           <div class="member-card core-card">
-            <img src="assets/img/team/members/theresia.jpg" class="member-photo" alt="Theresia Amelie Hendrata">
+            <img src="assets/img/team/members/theresia.webp" class="member-photo" alt="Theresia Amelie Hendrata">
             <div class="member-info">
               <span class="role-badge">Auxiliary</span>
               <h5>Theresia Amelie Hendrata</h5>
@@ -279,7 +280,7 @@
           </div>
 
           <div class="member-card core-card">
-            <img src="assets/img/team/members/vania.jpg" class="member-photo" alt="Vania Lenora Guo">
+            <img src="assets/img/team/members/vania.webp" class="member-photo" alt="Vania Lenora Guo">
             <div class="member-info">
               <span class="role-badge">Auxiliary</span>
               <h5>Vania Lenora Guo</h5>
@@ -301,7 +302,7 @@
         <div class="member-grid mb-3" data-aos="fade-up">
 
           <div class="member-card core-card">
-            <img src="assets/img/team/core/luna.jpg" class="member-photo" alt="Laurensia Luna Maheswariputri">
+            <img src="assets/img/team/core/luna.webp" class="member-photo" alt="Laurensia Luna Maheswariputri">
             <div class="member-info">
               <span class="role-badge">Coordinator</span>
               <h5>Laurensia Luna Maheswariputri</h5>
@@ -309,7 +310,7 @@
           </div>
 
           <div class="member-card core-card">
-            <img src="assets/img/team/members/timothy.jpg" class="member-photo" alt="Timothy Arthur Harrison">
+            <img src="assets/img/team/members/timothy.webp" class="member-photo" alt="Timothy Arthur Harrison">
             <div class="member-info">
               <span class="role-badge">Auxiliary</span>
               <h5>Timothy Arthur Harrison</h5>
@@ -317,7 +318,7 @@
           </div>
 
           <div class="member-card core-card">
-            <img src="assets/img/team/members/aubrey.jpg" class="member-photo" alt="Aubrey Raphaella Wijaya">
+            <img src="assets/img/team/members/aubrey.webp" class="member-photo" alt="Aubrey Raphaella Wijaya">
             <div class="member-info">
               <span class="role-badge">Auxiliary</span>
               <h5>Aubrey Raphaella Wijaya</h5>
@@ -325,7 +326,7 @@
           </div>
 
           <div class="member-card core-card">
-            <img src="assets/img/team/members/clara.jpg" class="member-photo" alt="Clara Maharani Gautama">
+            <img src="assets/img/team/members/clara.webp" class="member-photo" alt="Clara Maharani Gautama">
             <div class="member-info">
               <span class="role-badge">Auxiliary</span>
               <h5>Clara Maharani Gautama</h5>
@@ -333,7 +334,7 @@
           </div>
 
           <div class="member-card core-card">
-            <img src="assets/img/team/members/gisella.jpg" class="member-photo" alt="Gisella Elisheba Shira Renve Tambunan">
+            <img src="assets/img/team/members/gisella.webp" class="member-photo" alt="Gisella Elisheba Shira Renve Tambunan">
             <div class="member-info">
               <span class="role-badge">Auxiliary</span>
               <h5>Gisella Elisheba Tambunan</h5>
@@ -341,7 +342,7 @@
           </div>
 
           <div class="member-card core-card">
-            <img src="assets/img/team/members/natasya.jpg" class="member-photo" alt="Natasya Priyono">
+            <img src="assets/img/team/members/natasya.webp" class="member-photo" alt="Natasya Priyono">
             <div class="member-info">
               <span class="role-badge">Auxiliary</span>
               <h5>Natasya Priyono</h5>
@@ -349,7 +350,7 @@
           </div>
 
           <div class="member-card core-card">
-            <img src="assets/img/team/members/stella.jpg" class="member-photo" alt="Stella Yogan">
+            <img src="assets/img/team/members/stella.webp" class="member-photo" alt="Stella Yogan">
             <div class="member-info">
               <span class="role-badge">Auxiliary</span>
               <h5>Stella Yogan</h5>
@@ -357,7 +358,7 @@
           </div>
 
           <div class="member-card core-card">
-            <img src="assets/img/team/members/dominicus.jpg" class="member-photo" alt="Dominicus Anshillo Putra Prapanca">
+            <img src="assets/img/team/members/dominicus.webp" class="member-photo" alt="Dominicus Anshillo Putra Prapanca">
             <div class="member-info">
               <span class="role-badge">Auxiliary</span>
               <h5>Dominicus Anshillo Prapanca</h5>
@@ -365,7 +366,7 @@
           </div>
 
           <div class="member-card core-card">
-            <img src="assets/img/team/members/mariel.jpg" class="member-photo" alt="Mariel Cinara Adam">
+            <img src="assets/img/team/members/mariel.webp" class="member-photo" alt="Mariel Cinara Adam">
             <div class="member-info">
               <span class="role-badge">Auxiliary</span>
               <h5>Mariel Cinara Adam</h5>
@@ -373,7 +374,7 @@
           </div>
 
           <div class="member-card core-card">
-            <img src="assets/img/team/members/felisita.jpg" class="member-photo" alt="Felisita Tiaruli Paramitha">
+            <img src="assets/img/team/members/felisita.webp" class="member-photo" alt="Felisita Tiaruli Paramitha">
             <div class="member-info">
               <span class="role-badge">Auxiliary</span>
               <h5>Felisita Tiaruli Paramitha</h5>
@@ -381,7 +382,7 @@
           </div>
 
           <div class="member-card core-card">
-            <img src="assets/img/team/members/jason.jpg" class="member-photo" alt="Jason Sebastian Hasiholan Hutagalung">
+            <img src="assets/img/team/members/jason.webp" class="member-photo" alt="Jason Sebastian Hasiholan Hutagalung">
             <div class="member-info">
               <span class="role-badge">Auxiliary</span>
               <h5>Jason Sebastian Hutagalung</h5>
@@ -403,7 +404,7 @@
         <div class="member-grid mb-3" data-aos="fade-up">
 
           <div class="member-card core-card">
-            <img src="assets/img/team/core/lewis-trananta.jpg" class="member-photo" alt="Lewis Trananta Liu">
+            <img src="assets/img/team/core/lewis-trananta.webp" class="member-photo" alt="Lewis Trananta Liu">
             <div class="member-info">
               <span class="role-badge">Coordinator</span>
               <h5>Lewis Trananta Liu</h5>
@@ -411,7 +412,7 @@
           </div>
 
           <div class="member-card core-card">
-            <img src="assets/img/team/members/gregory.jpg" class="member-photo" alt="Gregory Declan Sosroutomo">
+            <img src="assets/img/team/members/gregory.webp" class="member-photo" alt="Gregory Declan Sosroutomo">
             <div class="member-info">
               <span class="role-badge">Auxiliary</span>
               <h5>Gregory Declan Sosroutomo</h5>
@@ -419,7 +420,7 @@
           </div>
 
           <div class="member-card core-card">
-            <img src="assets/img/team/members/callista-mathea.jpg" class="member-photo" alt="Callista Mathea Wangsasaputra">
+            <img src="assets/img/team/members/callista-mathea.webp" class="member-photo" alt="Callista Mathea Wangsasaputra">
             <div class="member-info">
               <span class="role-badge">Auxiliary</span>
               <h5>Callista Mathea Wangsasaputra</h5>
@@ -427,7 +428,7 @@
           </div>
 
           <div class="member-card core-card">
-            <img src="assets/img/team/members/anastasia.jpg" class="member-photo" alt="Anastasia Janice Wibhawa Hendradi">
+            <img src="assets/img/team/members/anastasia.webp" class="member-photo" alt="Anastasia Janice Wibhawa Hendradi">
             <div class="member-info">
               <span class="role-badge">Auxiliary</span>
               <h5>Anastasia Janice Hendradi</h5>
@@ -435,7 +436,7 @@
           </div>
 
           <div class="member-card core-card">
-            <img src="assets/img/team/members/alexander.jpg" class="member-photo" alt="Alexander Noel Ariabima Danurjati">
+            <img src="assets/img/team/members/alexander.webp" class="member-photo" alt="Alexander Noel Ariabima Danurjati">
             <div class="member-info">
               <span class="role-badge">Auxiliary</span>
               <h5>Alexander Noel A. Danurjati</h5>
@@ -457,7 +458,7 @@
         <div class="member-grid mb-3" data-aos="fade-up">
 
           <div class="member-card core-card">
-            <img src="assets/img/team/core/ben.jpg" class="member-photo" alt="Benedict Halim">
+            <img src="assets/img/team/core/ben.webp" class="member-photo" alt="Benedict Halim">
             <div class="member-info">
               <span class="role-badge">Coordinator</span>
               <h5>Benedict Halim</h5>
@@ -465,7 +466,7 @@
           </div>
 
           <div class="member-card core-card">
-            <img src="assets/img/team/members/benjamin.jpg" class="member-photo" alt="Benjamin Joseph Lie">
+            <img src="assets/img/team/members/benjamin.webp" class="member-photo" alt="Benjamin Joseph Lie">
             <div class="member-info">
               <span class="role-badge">Auxiliary</span>
               <h5>Benjamin Joseph Lie</h5>
@@ -473,7 +474,7 @@
           </div>
 
           <div class="member-card core-card">
-            <img src="assets/img/team/members/maria-michelle.jpg" class="member-photo" alt="Maria Michelle Aurelia Mandhana">
+            <img src="assets/img/team/members/maria-michelle.webp" class="member-photo" alt="Maria Michelle Aurelia Mandhana">
             <div class="member-info">
               <span class="role-badge">Auxiliary</span>
               <h5>Maria Michelle Aurelia Mandhana</h5>
@@ -495,7 +496,7 @@
         <div class="member-grid mb-3" data-aos="fade-up">
 
           <div class="member-card core-card">
-            <img src="assets/img/team/core/lewis-tirta.jpg" class="member-photo" alt="Rafael Lewis Tirtaatmadja">
+            <img src="assets/img/team/core/lewis-tirta.webp" class="member-photo" alt="Rafael Lewis Tirtaatmadja">
             <div class="member-info">
               <span class="role-badge">Coordinator</span>
               <h5>Rafael Lewis Tirtaatmadja</h5>
@@ -503,7 +504,7 @@
           </div>
 
           <div class="member-card core-card">
-            <img src="assets/img/team/members/axl.jpg" class="member-photo" alt="Axl Rafael Utomo">
+            <img src="assets/img/team/members/axl.webp" class="member-photo" alt="Axl Rafael Utomo">
             <div class="member-info">
               <span class="role-badge">Auxiliary</span>
               <h5>Axl Rafael Utomo</h5>
@@ -511,7 +512,7 @@
           </div>
 
           <div class="member-card core-card">
-            <img src="assets/img/team/members/audrey.jpg" class="member-photo" alt="Maria Audrey Kurnady">
+            <img src="assets/img/team/members/audrey.webp" class="member-photo" alt="Maria Audrey Kurnady">
             <div class="member-info">
               <span class="role-badge">Auxiliary</span>
               <h5>Maria Audrey Kurnady</h5>
@@ -519,7 +520,7 @@
           </div>
 
           <div class="member-card core-card">
-            <img src="assets/img/team/members/enzo.jpg" class="member-photo" alt="Enzo Navarro Sulistio">
+            <img src="assets/img/team/members/enzo.webp" class="member-photo" alt="Enzo Navarro Sulistio">
             <div class="member-info">
               <span class="role-badge">Auxiliary</span>
               <h5>Enzo Navarro Sulistio</h5>
@@ -527,7 +528,7 @@
           </div>
 
           <div class="member-card core-card">
-            <img src="assets/img/team/members/fathia.jpg" class="member-photo" alt="Fathia Kayla Ismail">
+            <img src="assets/img/team/members/fathia.webp" class="member-photo" alt="Fathia Kayla Ismail">
             <div class="member-info">
               <span class="role-badge">Auxiliary</span>
               <h5>Fathia Kayla Ismail</h5>
@@ -535,7 +536,7 @@
           </div>
 
           <div class="member-card core-card">
-            <img src="assets/img/team/members/chloe.jpg" class="member-photo" alt="Chloe Eugenia Kwa">
+            <img src="assets/img/team/members/chloe.webp" class="member-photo" alt="Chloe Eugenia Kwa">
             <div class="member-info">
               <span class="role-badge">Auxiliary</span>
               <h5>Chloe Eugenia Kwa</h5>
@@ -543,7 +544,7 @@
           </div>
 
           <div class="member-card core-card">
-            <img src="assets/img/team/members/leolla.jpg" class="member-photo" alt="Leolla Leonard Siauw">
+            <img src="assets/img/team/members/leolla.webp" class="member-photo" alt="Leolla Leonard Siauw">
             <div class="member-info">
               <span class="role-badge">Auxiliary</span>
               <h5>Leolla Leonard Siauw</h5>
@@ -551,7 +552,7 @@
           </div>
 
           <div class="member-card core-card">
-            <img src="assets/img/team/members/glovanny.jpg" class="member-photo" alt="Glovanny Tanuwibawa">
+            <img src="assets/img/team/members/glovanny.webp" class="member-photo" alt="Glovanny Tanuwibawa">
             <div class="member-info">
               <span class="role-badge">Auxiliary</span>
               <h5>Glovanny Tanuwibawa</h5>
@@ -559,7 +560,7 @@
           </div>
 
           <div class="member-card core-card">
-            <img src="assets/img/team/members/mechtildis.jpg" class="member-photo" alt="Mechtildis Nathania Putri">
+            <img src="assets/img/team/members/mechtildis.webp" class="member-photo" alt="Mechtildis Nathania Putri">
             <div class="member-info">
               <span class="role-badge">Auxiliary</span>
               <h5>Mechtildis Nathania Putri</h5>
@@ -567,7 +568,7 @@
           </div>
 
           <div class="member-card core-card">
-            <img src="assets/img/team/members/aimee.jpg" class="member-photo" alt="Aimee Davina">
+            <img src="assets/img/team/members/aimee.webp" class="member-photo" alt="Aimee Davina">
             <div class="member-info">
               <span class="role-badge">Auxiliary</span>
               <h5>Aimee Davina</h5>
@@ -589,7 +590,7 @@
         <div class="member-grid mb-3" data-aos="fade-up">
 
           <div class="member-card core-card">
-            <img src="assets/img/team/core/sean.jpg" class="member-photo" alt="Sean Vincent Budiman">
+            <img src="assets/img/team/core/sean.webp" class="member-photo" alt="Sean Vincent Budiman">
             <div class="member-info">
               <span class="role-badge">Coordinator I</span>
               <h5>Sean Vincent Budiman</h5>
@@ -597,7 +598,7 @@
           </div>
 
           <div class="member-card core-card">
-            <img src="assets/img/team/core/jessie.jpg" class="member-photo" alt="Jessie Aurelia Hendrawan">
+            <img src="assets/img/team/core/jessie.webp" class="member-photo" alt="Jessie Aurelia Hendrawan">
             <div class="member-info">
               <span class="role-badge">Coordinator II</span>
               <h5>Jessie Aurelia Hendrawan</h5>
@@ -605,7 +606,7 @@
           </div>
 
           <div class="member-card core-card">
-            <img src="assets/img/team/members/bianca.jpg" class="member-photo" alt="Bianca Madoka Rianto">
+            <img src="assets/img/team/members/bianca.webp" class="member-photo" alt="Bianca Madoka Rianto">
             <div class="member-info">
               <span class="role-badge">Auxiliary</span>
               <h5>Bianca Madoka Rianto</h5>
@@ -613,7 +614,7 @@
           </div>
 
           <div class="member-card core-card">
-            <img src="assets/img/team/members/benedict-sandie.jpg" class="member-photo" alt="Benedict Sandie Gihon Batubara">
+            <img src="assets/img/team/members/benedict-sandie.webp" class="member-photo" alt="Benedict Sandie Gihon Batubara">
             <div class="member-info">
               <span class="role-badge">Auxiliary</span>
               <h5>Benedict Sandie G. Batubara</h5>
@@ -629,7 +630,7 @@
           </div>
 
           <div class="member-card core-card">
-            <img src="assets/img/team/members/ignatius.jpg" class="member-photo" alt="Ignatius Loyola Haryo Dimietrio">
+            <img src="assets/img/team/members/ignatius.webp" class="member-photo" alt="Ignatius Loyola Haryo Dimietrio">
             <div class="member-info">
               <span class="role-badge">Auxiliary</span>
               <h5>Ignatius Loyola Haryo Dimietrio</h5>
@@ -637,7 +638,7 @@
           </div>
 
           <div class="member-card core-card">
-            <img src="assets/img/team/members/raynan.jpg" class="member-photo" alt="Raynan Hindradata Yoslim">
+            <img src="assets/img/team/members/raynan.webp" class="member-photo" alt="Raynan Hindradata Yoslim">
             <div class="member-info">
               <span class="role-badge">Auxiliary</span>
               <h5>Raynan Hindradata Yoslim</h5>
@@ -645,7 +646,7 @@
           </div>
 
           <div class="member-card core-card">
-            <img src="assets/img/team/members/hayden.jpg" class="member-photo" alt="Hayden Aurelius Limanto">
+            <img src="assets/img/team/members/hayden.webp" class="member-photo" alt="Hayden Aurelius Limanto">
             <div class="member-info">
               <span class="role-badge">Auxiliary</span>
               <h5>Hayden Aurelius Limanto</h5>
@@ -653,7 +654,7 @@
           </div>
 
           <div class="member-card core-card">
-            <img src="assets/img/team/members/callysta-mattea.jpg" class="member-photo" alt="Callysta Mattea">
+            <img src="assets/img/team/members/callysta-mattea.webp" class="member-photo" alt="Callysta Mattea">
             <div class="member-info">
               <span class="role-badge">Auxiliary</span>
               <h5>Callysta Mattea</h5>
@@ -661,7 +662,7 @@
           </div>
 
           <div class="member-card core-card">
-            <img src="assets/img/team/members/sefina.jpg" class="member-photo" alt="Sefina Louisa Pramono">
+            <img src="assets/img/team/members/sefina.webp" class="member-photo" alt="Sefina Louisa Pramono">
             <div class="member-info">
               <span class="role-badge">Auxiliary</span>
               <h5>Sefina Louisa Pramono</h5>
@@ -677,7 +678,7 @@
           </div>
 
           <div class="member-card core-card">
-            <img src="assets/img/team/members/arlo.jpg" class="member-photo" alt="Arlo Massie Partangiang Hutagalung">
+            <img src="assets/img/team/members/arlo.webp" class="member-photo" alt="Arlo Massie Partangiang Hutagalung">
             <div class="member-info">
               <span class="role-badge">Auxiliary</span>
               <h5>Arlo Massie P. Hutagalung</h5>
@@ -685,7 +686,7 @@
           </div>
 
           <div class="member-card core-card">
-            <img src="assets/img/team/members/marvin.jpg" class="member-photo" alt="Marvin Tjung">
+            <img src="assets/img/team/members/marvin.webp" class="member-photo" alt="Marvin Tjung">
             <div class="member-info">
               <span class="role-badge">Auxiliary</span>
               <h5>Marvin Tjung</h5>
@@ -693,7 +694,7 @@
           </div>
 
           <div class="member-card core-card">
-            <img src="assets/img/team/members/jayden.jpg" class="member-photo" alt="Jayden Foster Permadhi">
+            <img src="assets/img/team/members/jayden.webp" class="member-photo" alt="Jayden Foster Permadhi">
             <div class="member-info">
               <span class="role-badge">Auxiliary</span>
               <h5>Jayden Foster Permadhi</h5>
@@ -724,9 +725,9 @@
   <a href="#" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
   <div id="preloader"></div>
 
-  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/vendor/aos/aos.js"></script>
-  <script src="assets/js/main.js"></script>
+  <script defer src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script defer src="assets/vendor/aos/aos.js"></script>
+  <script defer src="assets/js/main.js"></script>
   <script>
   document.querySelectorAll('.dropdown-submenu > a').forEach(function(link) {
     link.addEventListener('click', function(e) {
