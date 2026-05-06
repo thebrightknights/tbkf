@@ -138,6 +138,7 @@
   inset: 0;
   background: url('../img/stats-bg.jpg') center/cover no-repeat;
   opacity: 0.05;
+  pointer-events: none;
 }
 
 .hero-bk .hero-eyebrow {
