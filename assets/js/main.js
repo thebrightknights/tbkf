@@ -106,18 +106,15 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   
-  const glightbox = GLightbox({
-    selector: '.glightbox'
-  });
+  if (typeof GLightbox !== 'undefined') {
+    GLightbox({ selector: '.glightbox' });
+  }
 
-  /**
-   * Initiate pURE cOUNTER
-   */
-  new PureCounter();
+  if (typeof PureCounter !== 'undefined') {
+    new PureCounter();
+  }
 
-  /**
-   * Init swiper slider with 1 slide at once in desktop view
-   */
+  if (typeof Swiper !== 'undefined' && document.querySelector('.slides-1')) {
   new Swiper('.slides-1', {
     speed: 600,
     loop: true,
@@ -137,9 +134,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  /**
-   * Init swiper slider with 3 slides at once in desktop view
-   */
+  if (document.querySelector('.slides-3')) {
   new Swiper('.slides-3', {
     speed: 600,
     loop: true,
@@ -158,20 +153,13 @@ document.addEventListener('DOMContentLoaded', () => {
       prevEl: '.swiper-button-prev',
     },
     breakpoints: {
-      320: {
-        slidesPerView: 1,
-        spaceBetween: 40
-      },
-
-      1200: {
-        slidesPerView: 3,
-      }
+      320: { slidesPerView: 1, spaceBetween: 40 },
+      1200: { slidesPerView: 3 }
     }
   });
+  }
 
-  /**
-   * Gallery Slider
-   */
+  if (document.querySelector('.gallery-slider')) {
   new Swiper('.gallery-slider', {
     speed: 400,
     loop: true,
@@ -187,20 +175,13 @@ document.addEventListener('DOMContentLoaded', () => {
       clickable: true
     },
     breakpoints: {
-      320: {
-        slidesPerView: 1,
-        spaceBetween: 20
-      },
-      640: {
-        slidesPerView: 3,
-        spaceBetween: 20
-      },
-      992: {
-        slidesPerView: 5,
-        spaceBetween: 20
-      }
+      320: { slidesPerView: 1, spaceBetween: 20 },
+      640: { slidesPerView: 3, spaceBetween: 20 },
+      992: { slidesPerView: 5, spaceBetween: 20 }
     }
   });
+  }
+  } // end Swiper block
 
   /**
    * Animation on scroll function and init

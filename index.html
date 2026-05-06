@@ -1,579 +1,1019 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="utf-8">
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
-
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>The Bright Knight Foundation</title>
-  <meta content="" name="description">
-  <meta content="" name="keywords">
-
-  <!-- Logo atas (tab) -->
-  <link href="bright-knights-logo.jpg" rel="icon">
-  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
-
-  <!-- Google Fonts -->
+  <meta name="description" content="The Bright Knight Foundation — Inspiring change through education, outreach, and community in Indonesia.">
+  <link href="assets/img/bright-knights-logo.jpg" rel="icon">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600;1,700&family=Amatic+SC:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
-
-  
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
   <link href="assets/vendor/aos/aos.css" rel="stylesheet">
   <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
   <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
-
   <link href="assets/css/main.css" rel="stylesheet">
+  <link href="assets/css/bk-revamp.css" rel="stylesheet">
 
+  <style>
+    /* Hero IG grid */
+    .ig-feed-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: repeat(2, 1fr);
+      gap: 6px;
+      border-radius: 16px;
+      overflow: hidden;
+    }
+    .ig-feed-grid a { display: block; overflow: hidden; }
+    .ig-feed-grid a img {
+      width: 100%; height: 180px; object-fit: cover;
+      transition: transform 0.4s ease;
+      display: block;
+    }
+    .ig-feed-grid a:hover img { transform: scale(1.07); }
+    .ig-feed-overlay {
+      background: rgba(13,27,62,0.7);
+      border-radius: 14px;
+      padding: 14px 18px;
+      margin-top: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .ig-feed-overlay .ig-handle {
+      color: rgba(255,255,255,0.9);
+      font-size: 14px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .ig-feed-overlay .ig-handle i { color: var(--bk-gold); font-size: 18px; }
+    .ig-feed-overlay a.ig-follow-btn {
+      background: var(--bk-gold);
+      color: var(--bk-dark);
+      border-radius: 50px;
+      padding: 6px 18px;
+      font-size: 13px;
+      font-weight: 700;
+      text-decoration: none;
+      transition: 0.3s ease;
+    }
+    .ig-feed-overlay a.ig-follow-btn:hover { background: var(--bk-gold-dk); color: #fff; }
 
+    /* Season cards */
+    .season-prog-card {
+      border-radius: var(--bk-radius);
+      padding: 32px;
+      color: #fff;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .season-prog-card:hover { transform: translateY(-4px); box-shadow: 0 16px 48px rgba(0,0,0,0.25); }
+    .season-prog-card .sp-links { display: flex; flex-direction: column; gap: 10px; margin-bottom: 24px; flex: 1; }
+    .season-prog-card .sp-links span {
+      color: rgba(255,255,255,0.75);
+      font-size: 13px;
+      font-weight: 500;
+    }
+    .season-prog-card .sp-cta {
+      display: inline-block;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--bk-gold);
+      text-decoration: none;
+      padding: 9px 22px;
+      border: 1.5px solid var(--bk-gold);
+      border-radius: 50px;
+      transition: background 0.25s ease, color 0.25s ease;
+      align-self: flex-start;
+    }
+    .season-prog-card .sp-cta:hover { background: var(--bk-gold); color: var(--bk-dark); }
+
+    /* Journey section — dark photo background */
+    #history { position: relative; overflow: hidden; background: #000; padding: 80px 0 60px; }
+    .tl-bg-img {
+      position: absolute; inset: 0; width: 100%; height: 100%;
+      object-fit: cover; opacity: 0;
+      filter: brightness(0.28) saturate(0.7);
+    }
+    .tl-bg-img:nth-child(1) { animation: tlBgCycle 18s infinite 0s; }
+    .tl-bg-img:nth-child(2) { animation: tlBgCycle 18s infinite 6s; }
+    .tl-bg-img:nth-child(3) { animation: tlBgCycle 18s infinite 12s; }
+    @keyframes tlBgCycle {
+      0%, 5%   { opacity: 0; }
+      10%, 30% { opacity: 1; }
+      35%, 100%{ opacity: 0; }
+    }
+    .tl-fade-l {
+      position: absolute; left: 0; top: 0; bottom: 0; width: 220px;
+      background: linear-gradient(to right, #000, transparent);
+      z-index: 2; pointer-events: none;
+    }
+    .tl-fade-r {
+      position: absolute; right: 0; top: 0; bottom: 0; width: 220px;
+      background: linear-gradient(to left, #000, transparent);
+      z-index: 2; pointer-events: none;
+    }
+    #history .bk-section-title span.eyebrow { color: var(--bk-gold-lt) !important; }
+    #history .bk-section-title h2 { color: #fff !important; }
+    #history .bk-section-title p { color: rgba(255,255,255,0.6) !important; }
+    #tl5Track { transition: opacity 0.28s ease; }
+
+    /* Photo slider */
+    .photo-slider-section { overflow: hidden; margin-bottom: 0; }
+    .photo-slider-section .swiper { height: 500px; }
+    .photo-slider-section .swiper-slide img {
+      width: 100%; height: 100%; object-fit: cover; display: block;
+    }
+    .photo-slider-section .swiper-button-next,
+    .photo-slider-section .swiper-button-prev {
+      color: var(--bk-gold);
+    }
+    .photo-slider-section .swiper-pagination-bullet-active { background: var(--bk-gold); }
+
+    /* Orphanage map */
+    .orphanage-list-wrap {
+      background: #fff;
+      border-radius: 12px 0 0 12px;
+      box-shadow: var(--bk-shadow);
+      overflow-y: auto;
+      max-height: 460px;
+    }
+    .orphanage-btn {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      padding: 14px 18px;
+      border: none;
+      background: transparent;
+      border-left: 3px solid transparent;
+      text-align: left;
+      cursor: pointer;
+      transition: background 0.2s, border-color 0.2s;
+    }
+    .orphanage-btn:hover { background: rgba(201,162,39,0.06); }
+    .orphanage-btn.active {
+      background: rgba(201,162,39,0.12);
+      border-left-color: var(--bk-gold);
+    }
+    .orphanage-btn .ob-name { font-weight: 700; font-size: 13px; color: var(--bk-text); margin-bottom: 3px; }
+    .orphanage-btn .ob-visits { font-size: 11px; color: var(--bk-muted); }
+    #orphanageMap {
+      width: 100%; height: 460px; border: none;
+      border-radius: 0 12px 12px 0;
+      display: block;
+      box-shadow: var(--bk-shadow);
+    }
+
+    /* Mobile submenu */
+    @media (min-width: 992px) {
+      .navbar ul li.dropdown-submenu > ul {
+        display: none !important;
+        position: absolute;
+        left: 100%;
+        top: 0;
+      }
+      .navbar ul li.dropdown-submenu:hover > ul { display: block !important; }
+    }
+
+    @media (max-width: 767px) {
+      .orphanage-list-wrap { border-radius: 12px 12px 0 0; max-height: 200px; }
+      #orphanageMap { height: 300px; border-radius: 0 0 12px 12px; }
+    }
+  </style>
 </head>
 
 <body>
-  <div class="container-fluid container-xl position-relative">
 
-    <div class="top-row d-flex align-items-center justify-content-between">
-      <a href="index.html" class="logo d-flex align-items-end">
-          <img src= "assets/img/bright-knights-logo.jpg"
-        <!-- <img src="assets/img/logo.webp" alt=""> 
-       <h4>The Bright Knight Foundation (TBKF)</h4><span>.</span>
-      </a>
-
-      <div class="d-flex align-items-center">
-        <div class="social-links">
-          <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
-          <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
-          <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
-        </div>
-
-        <form class="search-form ms-4">
-          <input type="text" placeholder="Search..." class="form-control">
-          <button type="submit" class="btn"><i class="bi bi-search"></i></button>
-        </form>
-      </div>
-    </div>
-
-  </div>
   <!-- ======= Header ======= -->
   <header id="header" class="header fixed-top d-flex align-items-center">
     <div class="container d-flex align-items-center justify-content-between">
-      
+
       <a href="index.html" class="logo d-flex align-items-center me-auto me-lg-0">
-       <!--Logo bk-->
-        <img src="bright-knights-logo.jpg"  alt="">
-        <h1><font size=4>The Bright Knight Foundation</font><span>.</span></h1>
+        <img src="assets/img/bright-knights-logo.jpg" alt="TBKF Logo">
+        <h1>The Bright Knight Foundation<span>.</span></h1>
       </a>
 
       <nav id="navbar" class="navbar">
         <ul>
           <li><a href="#hero">Home</a></li>
-          <li><a href="#about">About Us</a></li>
-          
-          <li><a href="#contact">Contact</a></li>
-          <li class="dropdown"><a href="#"><span>Language</span> <i class=""></i></a>
+          <li class="dropdown">
+            <a href="#"><span>Programs</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
             <ul>
-              <li><a href="bindo.html"><font color=#daa07a>Bahasa Indonesia</font></a></li>
+              <li class="dropdown-submenu">
+                <a href="season1.html">Season 1</a>
+                <ul>
+                  <li><a href="season1/rodeo.html"><strong>Rodeo</strong></a></li>
+                  <li><a href="season1/concert.html">Charity Concert</a></li>
+                  <li><a href="season1/youngknights.html">Young Knights</a></li>
+                </ul>
               </li>
-              <li><a href="index.html"><font color= #daa07a>English</font></a></li>
+              <li class="dropdown-submenu">
+                <a href="season2.html">Season 2</a>
+                <ul>
+                  <li><a href="season2/growth.html">Growth &amp; Skill</a></li>
+                  <li><a href="season2/health.html">Health &amp; Wellness</a></li>
+                  <li><a href="season2/green.html">Green &amp; Social Impact</a></li>
+                </ul>
+              </li>
             </ul>
+          </li>
+          <li><a href="team.html">Team</a></li>
+          <li><a href="donate.html" class="nav-donate-btn">Donate</a></li>
         </ul>
-      </nav><!-- .navbar -->
+      </nav>
 
-      <a class="btn-book-a-table" href="https://www.instagram.com/brightknights.ina/?hl=id"target="_blank"><b>Visit Us</b></a>
       <i class="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
       <i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
-
     </div>
   </header>
-  <section id="hero" class="hero d-flex align-items-center section-bg">
+
+  <!-- ======= Hero ======= -->
+  <section id="hero" class="hero-bk">
     <div class="container">
-      <div class="row justify-content-between gy-5">
-        <div class="col-lg-5 order-2 order-lg-1 d-flex flex-column justify-content-center align-items-center align-items-lg-start text-center text-lg-start">
-          <p data-aos="fade-up"><font size=14 color="orange"><b>Hello Knights! <font size=6>⚔</font></b></font><br>The Bright Knight Foundation</p>
-          <p align=justify data-aos="fade-up"><font color=#865A2B><mark>Introducing The Bright Knights Foundation, a beacon of hope and change in the landscape of education equality in Indonesia. Established in 2020 and revitalized through restructuring in 2023, our non-profit organization is dedicated to fostering equal opportunities in education for children across Indonesia.</mark></font></b></p>
-          <div class="d-flex" > 
-            <a href="https://www.instagram.com/brightknights.ina/?hl=id" class="btn-book-a-table" data-aos="fade-up"><b>Visit Us</b></a>
-            <a href="THIS IS THE BRIGHT KNIGHT FOUNDATION ⚔️.mp4" class="glightbox btn-watch-video d-flex align-items-center" data-aos="fade-up"><i class="bi bi-play-circle"></i><span><b>Watch Video</b></span></a>
+      <div class="row align-items-center gy-5">
+
+        <div class="col-lg-6" data-aos="fade-right">
+          <div class="hero-eyebrow">The Bright Knight Foundation ⚔</div>
+          <h1 class="hero-headline">
+            Inspiring <span class="highlight">Change,</span><br>
+            One Knight at a Time
+          </h1>
+          <p class="hero-sub">
+            A non-profit community dedicated to equal opportunities in education,
+            outreach, and creative growth for children across Indonesia.
+          </p>
+          <div class="d-flex flex-wrap gap-3">
+            <a href="donate.html" class="btn-bk-primary">
+              <i class="bi bi-heart-fill"></i> Donate Now
+            </a>
+            <a href="#about" class="btn-bk-outline">
+              <i class="bi bi-arrow-down-circle"></i> Our Story
+            </a>
+            <a href="assets/video/tbkf-intro.mp4"
+               class="btn-bk-outline glightbox"
+               data-type="video"
+               data-gallery="hero-video">
+              <i class="bi bi-play-circle-fill"></i> Watch Video
+            </a>
           </div>
         </div>
-        <div class="col-lg-5 order-1 order-lg-2 text-center text-lg-start">
-          <img src="mangeapt2.jpg" class="img-fluid" alt="" data-aos="zoom-out" data-aos-delay="300">
+
+        <div class="col-lg-6" data-aos="fade-left" data-aos-delay="150">
+          <div class="ig-feed-grid">
+            <a class="glightbox" data-gallery="hero-grid" href="assets/img/season2/rodeo-s2-1/r1-1.jpg">
+              <img src="assets/img/season2/rodeo-s2-1/r1-1.jpg" alt="TBKF Event">
+            </a>
+            <a class="glightbox" data-gallery="hero-grid" href="assets/img/season2/rodeo-s2-1/r1-2.jpg">
+              <img src="assets/img/season2/rodeo-s2-1/r1-2.jpg" alt="TBKF Event">
+            </a>
+            <a class="glightbox" data-gallery="hero-grid" href="assets/img/season2/rodeo-s2-1/r1-3.jpg">
+              <img src="assets/img/season2/rodeo-s2-1/r1-3.jpg" alt="TBKF Event">
+            </a>
+            <a class="glightbox" data-gallery="hero-grid" href="assets/img/season2/rodeo-s2-2/r2-1.jpg">
+              <img src="assets/img/season2/rodeo-s2-2/r2-1.jpg" alt="TBKF Event">
+            </a>
+            <a class="glightbox" data-gallery="hero-grid" href="assets/img/season2/rodeo-s2-2/r2-3.jpg">
+              <img src="assets/img/season2/rodeo-s2-2/r2-3.jpg" alt="TBKF Event">
+            </a>
+            <a class="glightbox" data-gallery="hero-grid" href="assets/img/season2/rodeo-s2-2/r2-4.jpg">
+              <img src="assets/img/season2/rodeo-s2-2/r2-4.jpg" alt="TBKF Event">
+            </a>
+          </div>
+          <div class="ig-feed-overlay">
+            <div class="ig-handle">
+              <i class="bi bi-instagram"></i> @brightknights.ina
+            </div>
+            <a href="https://www.instagram.com/brightknights.ina/" target="_blank" class="ig-follow-btn">Follow Us</a>
+          </div>
         </div>
+
       </div>
     </div>
   </section>
 
-  <main id="main">
-
-     <!-- Latest Posts Section -->
-    <section id="latest-posts" class="latest-posts section">
-
-      <!-- Section Title -->
-      <div class="container section-title" data-aos="fade-up">
-       <font size= 5><b>TBKF Programs</b></font>
-        <div><span>Check Our</span> <span class="description-title">latest programs!</font></span></div>
-      </div><!-- End Section Title -->
-<br> 
-      <div class="container" data-aos="fade-up" data-aos-delay="100">
-        <div class="row gy-4">
-
-          <div class="col-lg-4">
-            <article>
-
-              <div class="post-img">
-                <img src="assets/img/Rodeo #5.jpg" alt="" class="img-fluid">
-              </div>
-
-              <p class="post-category">Bright Knight Rodeo #5</p>
-
-              <h2 class="title">
-                <a href="blog-details.html"><font color=black>Panti Asuhan Parappatan</font></a>
-              </h2>
-
-              <div class="d-flex align-items-center">
-                <img src="assets/img/bright-knights-logo.jpg" alt="" class="img-fluid post-author-img flex-shrink-0">
-                <div class="post-meta">
-                  <p class="post-author"><font color=gray>The Bright Knight Foundation </font></p>
-                  <p class="post-date">
-                    <time datetime="2022-01-01"><font color=red>25th January 2025</font></time>
-                  </p>
-                </div>
-              </div>
-
-            </article>
-          </div><!-- End post list item -->
-
-          <div class="col-lg-4">
-            <article>
-
-              <div class="post-img">
-                <img src="Rodeo #6.jpg" alt="" class="img-fluid">
-              </div>
-
-              <p class="post-category">Bright Knight Rodeo #6</p>
-
-              <h2 class="title">
-                <a href="blog-details.html"><font color=black>Yayasan Yatim Piatu Al-Andalusia</font></a>
-              </h2>
-
-              <div class="d-flex align-items-center">
-                <img src="assets/img/bright-knights-logo.jpg" alt="" class="img-fluid post-author-img flex-shrink-0">
-                <div class="post-meta">
-                  <p class="post-author"><font color=gray>The Bright Knight Foundation </font></p>
-                  <p class="post-date">
-                    <time datetime="2022-01-01"><font color=red>15 Maret 2025</font></time>
-                  </p>
-                </div>
-              </div>
-
-            </article>
-          </div><!-- End post list item -->
-
-          <div class="col-lg-4">
-            <article>
-
-              <div class="post-img">
-                <img src="Rodeo #7.jpg" alt="" class="img-fluid">
-              </div>
-
-              <p class="post-category">Bright Knight rodeo #7</p>
-
-              <h2 class="title">
-                <a href="blog-details.html"><font color=black>Yayasan Tri Asih</font></a>
-              </h2>
-
-              <div class="d-flex align-items-center">
-                <img src="assets/img/bright-knights-logo.jpg" alt="" class="img-fluid post-author-img flex-shrink-0">
-                <div class="post-meta">
-                  <p class="post-author"><font color=gray>The Bright Knight Foundation</font></p>
-                  <p class="post-date">
-                    <time datetime="2022-01-01"><font color=red>26 April 2025</font></time>
-                  </p>
-                </div>
-              </div>
-
-            </article>
-          </div><!-- End post list item -->
-
-          <div class="col-lg-4">
-            <article>
-
-              <div class="post-img">
-                <img src="Rodeo #8.jpg" alt="" class="img-fluid">
-              </div>
-
-              <p class="post-category">Bright Knight Rodeo #8</p>
-
-              <h2 class="title">
-                <a href="blog-details.html"><font color=black>Panti Asuhan Annajah</font></a>
-              </h2>
-
-              <div class="d-flex align-items-center">
-                <img src="assets/img/bright-knights-logo.jpg" alt="" class="img-fluid post-author-img flex-shrink-0">
-                <div class="post-meta">
-                  <p class="post-author"><font color=gray>The Bright Knight Foundation </font></p>
-                  <p class="post-date">
-                    <time datetime="2022-01-01"><font color=red>15 Juni 2025</font></time>
-                  </p>
-                </div>
-              </div>
-
-            </article>
-          </div><!-- End post list item -->
-
-          <div class="col-lg-4">
-            <article>
-
-              <div class="post-img">
-                <img src="Rodeo #9.jpg" alt="" class="img-fluid">
-              </div>
-
-              <p class="post-category">Bright Knight Rodeo #9</p>
-
-              <h2 class="title">
-                <a href="blog-details.html"><font color=black>Panti Asuhan Nurul Iman Mentas</font></a>
-              </h2>
-
-              <div class="d-flex align-items-center">
-                <img src="assets/img/bright-knights-logo.jpg" alt="" class="img-fluid post-author-img flex-shrink-0">
-                <div class="post-meta">
-                  <p class="post-author"><font color=gray>The Bright Knight Foundation </font></p>
-                  <p class="post-date">
-                    <time datetime="2022-01-01"><font color=red>3 Agustus 2025</font></time>
-                  </p>
-                </div>
-              </div>
-
-            </article>
-          </div><!-- End post list item -->
-
-          <div class="col-lg-4">
-            <article>
-
-              <div class="post-img">
-                <img src="Rodeo #10.jpg" alt="" class="img-fluid">
-              </div>
-
-              <p class="post-category">Bright Knight Rodeo #10</p>
-
-              <h2 class="title">
-                <a href="blog-details.html"><font color=black>Panti Asuhan Parapattan</font></a>
-              </h2>
-
-              <div class="d-flex align-items-center">
-                <img src="assets/img/bright-knights-logo.jpg" alt="" class="img-fluid post-author-img flex-shrink-0">
-                <div class="post-meta">
-                  <p class="post-author"><font color=gray> The Bright Knight Foundation </font></p>
-                  <p class="post-date">
-                    <time datetime="2022-01-01"><font color=red>16 Agustus 2025</font></time>
-                  </p>
-                </div>
-              </div>
-
-            </article>
-          </div><!-- End post list item -->
-
-        </div>
-      </div>
-
-    </section><!-- /Latest Posts Section -->
-
-    <section id="about" class="about">
-      <div class="container" data-aos="fade-up">
-
-        <div class="section-header">
-          <h2><font color=#ffbb10><b><font size=6>About Us</font></b></font></h2>
-          <p><b>Learn More</b> <span><b>About Us</b></span></p>
-        </div>
-<br><br>
-        <div class="row gy-4">
-          <div class="col-lg-7 position-relative about-img" style="background-image: url(assets/img/ignyabkpt2.jpg) ;" data-aos="fade-up" data-aos-delay="150">
-            <div class="call-us position-absolute">
-              <h4><b>Contact Us</b></h4>
-              <p>+62 813-1171-2221 (Cato)</p>
-            </div>
-          </div>
-          <div class="col-lg-5 d-flex align-items-end" data-aos="fade-up" data-aos-delay="300">
-            <div class="content ps-0 ps-lg-5">
-              <p class="fst-italic">
-              <font color="black"> "Aspiring to inspire others by GIVING back to the COMMUNITY #KnightsOnThree Home to @youngknights.ina, #TreasureKnight, and #OUTREACH"</font>
-              </p>
-              <p> <b><font size=5>Our vission & Mission</font></b></p>
-              <ul>
-                <li><i class="bi bi-check2-all"></i> <font color=gray><p align=justify>Our mission has always remained the same: to provide <font color=black><b><u>equal opportunities</u></b></font> for education</p></font</b></li>
-                <li><i class="bi bi-check2-all"></i><p align=justify> We are here to <font color=black><b><u>uphold the right</u></b></font> to education for the improverished children of Indonesia</b></p></li>
-                <li><i class="bi bi-check2-all"></i><p align=justify> To <font color=black><b><u> build a community </u></b></font> founded in ideology, professional growth and idealism.</p></li>
-                <li><i class="bi bi-check2-all"></i><p align=justify> To <font color=black><b><u>contribute</u></b></font> towards common knowledge to the arts.</p></li>
-                <li><i class="bi bi-check2-all"></i><p align=justify> To <font color=black><b><u>contribute</u></b></font> to the provision of equal opportunities in education for children in Indonesia.</p></li>
-
-
-              </ul>
-              <p><b><font color="orange"> Our Programs</font></b></p>
-              <ul type=disc>
-                <li><b>1.  YoungKnight</b></li>
-                We hope to <font color="orange"> inspire all </font> to <font color="orange">aspire </font>! All proceeds are donated 
-                to a partner <font color="orange"> Charity.</font>
-                <br><br>
-                <li><b>2.  TreasureKnight</b> </li>
-                In which proceeds will go to <font color="orange"> scholarships </font> at our partnering charities.
-                <br><br>
-                
-                <li><b>3.  Knights Rodeo</b></li>
-               <p align=justify> All revenue being earned will be <font color=orange>donated as charitable contribution</font>to support our local community in need.</p>
-              
-                <li><b>4.  Charity Concerts</b></li>
-               <p align="justify"> A Charity Recital by The Bright Knight Foundation. 
-                Featuring some of the most beloved repertoire: 
-                <br><ul>- Bach's legendary First Cello Suite
-                </ul>
-                <ul>- Tchaikovsky's fiery Souvenir de Florence
-                </ul>- Rachaminoff's gigantic Sonata in G minor
-              </p>
-                <br><br>
-              </ul>
-             
-              </div>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </section>
-
-    
-
-    <!-- ======= Stats Counter Section ======= -->
-    <section id="stats-counter" class="stats-counter">
-      <div class="container" data-aos="zoom-out">
-
-        <div class="row gy-4">
-
-          <div class="col-lg-3 col-md-6">
-            <div class="stats-item text-center w-100 h-100">
-              <span data-purecounter-start="0" data-purecounter-end="56" data-purecounter-duration="2" class="purecounter"></span>
-              <p>Members</p>
-            </div>
-          </div><!-- End Stats Item -->
-
-          <div class="col-lg-3 col-md-6">
-            <div class="stats-item text-center w-100 h-100">
-              <span data-purecounter-start="0" data-purecounter-end="14" data-purecounter-duration="2" class="purecounter"></span>
-              <p>Projects</p>
-            </div>
-          </div><!-- End Stats Item -->
-
-          <div class="col-lg-3 col-md-6">
-            <div class="stats-item text-center w-100 h-100">
-              <span data-purecounter-start="0" data-purecounter-end="28726" data-purecounter-duration="2" class="purecounter"></span>
-              <p>Hours Of Support</p>
-            </div>
-          </div><!-- End Stats Item -->
-
-          <div class="col-lg-3 col-md-6">
-            <div class="stats-item text-center w-100 h-100">
-              <span data-purecounter-start="0" data-purecounter-end="531" data-purecounter-duration="2" class="purecounter"></span>
-              <p>Followers</p>
-            </div>
-          </div><!-- End Stats Item -->
-
-        </div>
-
-      </div>
-    </section>
-
-   
-    
-        </div>
-
-      </div>
-    </section>
-
-   
-
-        </div>
-
-      </div>
-    </section>
-
-    <!-- ======= Gallery Section ======= -->
-    <section id="gallery" class="gallery section-bg">
-      <div class="container" data-aos="fade-up">
-
-        <div class="section-header">
-          <h2><font size=6><b>gallery</b></font></h2>
-          <p><b><font color="#F9C391 ">Bright Knight </font></b> <span><b>Camera Crumbs</b></span></p>
-        </div>
-        <div class="gallery-slider swiper">
-          <div class="swiper-wrapper align-items-center">
-            <div class="swiper-slide"><a class="glightbox" data-gallery="images-gallery" href="assets/LAW.JPG"><img src="assets/LAW.JPG" class="img-fluid" alt=""><b><font size=3>YK-LAW</font></b>
-            <br>
-          <font size=2> Moot Court Session</font></a></div>
-          <div class="swiper-slide"><a class="glightbox" data-gallery="images-gallery" href="assets/LAW1.JPG"><img src="assets/LAW1.JPG" class="img-fluid" alt=""><b><font size=3>Law School Life</font></b>
-            <br>
-          <font size=1>Aryo Pradhana & Muhammad Justin P, S.H.</font></a></div>
-          <div class="swiper-slide"><a class="glightbox" data-gallery="images-gallery" href="fotokonser.JPG"><img src="fotokonser.JPG" class="img-fluid" alt=""><b><font size=3>Charity Concert Series</font></b>
-            <br>
-          <font size=2>Tchaikovsky & Rachmaninoff</font></a></div>
-          <div class="swiper-slide"><a class="glightbox" data-gallery="images-gallery" href="assets/YDOK.JPG"><img src="assets/YDOK.JPG" class="img-fluid" alt=""><b><font size=3>YK-Medicine</font></b>
-            <br>
-          <font size=2>Basic Medical Skills & Suturing</font></a></div>
-          <div class="swiper-slide"><a class="glightbox" data-gallery="images-gallery" href="fotoapaangatau.JPG"><img src="fotoapaangatau.JPG" class="img-fluid" alt=""><b><font size=3>Knights Reborn To</font></b>
-            <br>
-          <font size=1>Panti Asuhan Berkat Kasih Immanuel</font></a></div>
-             <div class="swiper-slide"><a class="glightbox" data-gallery="images-gallery" href="assets/BK-RODEO.JPG.png"><img src="assets/BK-RODEO.JPG.png" class="img-fluid" alt=""><b><font size=3>BK RODEO</font></b>
-            <br>
-           <font size=1>Panti Asuhan Pondok Kasih Agape</font></a></div>
-          </div>
-          <div class="swiper-pagination"></div>
-        </div>
-
-      </div>
-    </section><!-- End Gallery Section -->
-
-    <!-- ======= Contact Section ======= -->
-    <section id="contact" class="contact">
-      <div class="container" data-aos="fade-up">
-
-        <div class="section-header">
-          <b><font size=6><font color=#FFD8AE >BRIGHT KNIGHT</font></font></b>
-          <p><b>Need Help?</b> <span><b>Contact Us</b></span></p>
-        </div>
-
-        <div class="mb-3">
-          <iframe style="border:30px; width: 100%; height: 350px;" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d253840.478949799!2d106.829518!3d-6.2297465!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f3e945e34b9d%3A0x5371bf0fdad786a2!2sJakarta!5e0!3m2!1sen!2sid!4v1708699908639!5m2!1sen!2sid" frameborder="0" allowfullscreen></iframe>
-        </div><!-- End Google Maps -->
-
-        <div class="row gy-4">
-
-          <div class="col-md-6">
-            <div class="info-item  d-flex align-items-center">
-              <i class="icon bi bi-map flex-shrink-0"></i>
-              <div>
-                <b>Our Location :</b><br>
-               <p>Jakarta, Indonesia</p>
-              </div>
-            </div>
-          </div><!-- End Info Item -->
-
-          <div class="col-md-6">
-            <div class="info-item d-flex align-items-center">
-              <i class="icon bi bi-envelope flex-shrink-0"></i>
-              <div>
-                <b>Contact Us: </b><br>
-                                <font size=2>thebrightknightfoundation@gmail.com</font><br>
-              </div>
-            </div>
-          </div><!-- End Info Item -->
-
-          <div class="col-md-6">
-            <div class="info-item  d-flex align-items-center">
-              <i class="icon bi bi-telephone flex-shrink-0"></i>
-              <div>
-                <b>Contact Us: </b><br>
-                <font size=2>@Brightknights.ina</font><br>
-              </div>
-            </div>
-          </div><!-- End Info Item -->
-
-          <div class="col-md-6">
-            <div class="info-item  d-flex align-items-center">
-              <i class="icon bi bi-share flex-shrink-0"></i>
-              <div>
-                <b>Teaching Hours</b>
-                <br>
-              Every Saturday: 11:00 A.M - Finish<br>
-                </div>
-              </div>
-            </div>
-          </div><!-- End Info Item -->
-
-        </div>
-
-
-      </div>
-    </section><!-- End Contact Section -->
-
-  </main><!-- End #main -->
-
-  <!-- ======= Footer ======= -->
-  <footer id="footer" class="footer">
-
+  <!-- ======= Vision & Mission ======= -->
+  <section id="about" class="section-white" style="padding:80px 0;">
     <div class="container">
-      <div class="row gy-3">
-        <div class="col-lg-3 col-md-6 d-flex">
-          <i class="bi bi-geo-alt icon"></i>
-          <div>
-            <b>Our Location :</b><br>
-              Jakarta,Indonesia
-            
-          </div>
 
-        </div>
+      <div class="bk-section-title" data-aos="fade-up">
+        <span class="eyebrow">About Us</span>
+        <h2>Our <span class="accent">Vision &amp; Mission</span></h2>
+        <p>"Aspiring to inspire others by giving back to the community — Home to Rodeo, TreasureKnight, Young Knights, and Charity Concert."</p>
+      </div>
 
-        <div class="col-lg-3 col-md-6 footer-links d-flex">
-          <i class="bi bi-telephone icon"></i>
-          <div>
-            <b>Contact Us : </b><br>
-               <font size=2>thebrightknightfoundation@gmail.com</font><br>
+      <div class="row gy-4">
+        <div class="col-lg-6" data-aos="fade-right">
+          <div class="vm-card h-100">
+            <div class="vm-icon">🔭</div>
+            <h3>Vision</h3>
+            <p class="vm-body">
+              To become a <strong>space for expression and personal growth</strong> for people who are
+              facing financial, educational, and emotional challenges in Indonesia.
+            </p>
+            <hr style="border-color:#f0f0f0; margin:20px 0;">
+            <p class="vm-body" style="font-style:italic; color:#888;">
+              Menjadi ruang untuk berekspresi dan tumbuh bagi mereka yang memiliki keterbatasan
+              secara finansial, edukasi, dan kebahagiaan di Indonesia.
             </p>
           </div>
         </div>
 
-        <div class="col-lg-3 col-md-6 footer-links d-flex">
-          <i class="bi bi-clock icon"></i>
-          <div>
-            <b>Contact Us :</b>
-            <p> +62 813-1171-2221 (Cato)</p>
-            <br>
-             
+        <div class="col-lg-6" data-aos="fade-left">
+          <div class="vm-card h-100">
+            <div class="vm-icon">🎯</div>
+            <h3>Mission</h3>
+            <ul class="mission-list">
+              <li>
+                <span class="mi-num">1</span>
+                <span>Providing opportunities to <strong>develop talents, creativity, and skills.</strong></span>
+              </li>
+              <li>
+                <span class="mi-num">2</span>
+                <span>Organizing mentoring and recreational activities to <strong>build resilience and self-confidence.</strong></span>
+              </li>
+              <li>
+                <span class="mi-num">3</span>
+                <span>Establishing collaborations with external partners to ensure <strong>program and resource sustainability.</strong></span>
+              </li>
+              <li>
+                <span class="mi-num">4</span>
+                <span>Conducting regular evaluations and continuous improvements to <strong>expand impact and effectiveness.</strong></span>
+              </li>
+            </ul>
           </div>
         </div>
-
-        <div class="col-lg-3 col-md-6 footer-links">
-          <b>Follow Us :</b><br>
-          <div class="social-links d-flex">
-            <a href="https://www.instagram.com/brightknights.ina/" target="_blank" class="instagram"><i class="bi bi-instagram"></i></a>
-            <a href="https://id.linkedin.com/company/brightknights" target="_blank" class="linkedin"><i class="bi bi-linkedin"></i></a>
-          </div>
-        </div>
-
       </div>
-    </div>
 
+    </div>
+  </section>
+
+  <!-- ======= Season Cards ======= -->
+  <section id="seasons" style="padding:60px 0 80px; background:var(--bk-bg);">
     <div class="container">
-      <div class="copyright">
-        &copy; YK-OLE <strong><span>Bright Knight</span></strong>. All Rights Reserved
+
+      <div class="bk-section-title" data-aos="fade-up">
+        <span class="eyebrow">Our Programs</span>
+        <h2>Explore by <span class="accent">Season</span></h2>
+        <p>Browse what we've built and what's currently active.</p>
       </div>
-      <div class="credits">
-       
-        <b>Designed by </b> <a href="https://bootstrapmade.com/"><b><u><font color=white>Bright Knight WEB Dev Team</font></u></b></a>
+
+      <div class="row gy-4">
+
+        <!-- Season 1 -->
+        <div class="col-lg-6" data-aos="fade-right">
+          <div class="season-prog-card" style="background:linear-gradient(135deg,var(--bk-dark),var(--bk-navy));">
+            <div style="font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--bk-gold); margin-bottom:12px;">TBKF 2023–2026 · Completed</div>
+            <h3 style="font-size:1.5rem; font-weight:800; color:#fff; margin-bottom:12px;">Season 1</h3>
+            <p style="color:rgba(255,255,255,0.7); font-size:14px; line-height:1.7; margin-bottom:20px;">Our founding season: 12 Rodeo outreach events, a classical charity recital, and the Young Knights education and seminar program.</p>
+            <div class="sp-links">
+              <span>⚔️ Rodeo — 12 community visits</span>
+              <span>🎵 Charity Concert — Balai Resital Kertanegara</span>
+              <span>📚 Young Knights — Belajar + Seminars</span>
+            </div>
+            <a href="season1.html" class="sp-cta">View Season 1 →</a>
+          </div>
+        </div>
+
+        <!-- Season 2 -->
+        <div class="col-lg-6" data-aos="fade-left">
+          <div class="season-prog-card" style="background:linear-gradient(135deg,#0e2818,#1a3a2a); border:1px solid rgba(201,162,39,0.2);">
+            <div style="font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--bk-gold); margin-bottom:12px;">TBKF 2026–2027 · Active</div>
+            <h3 style="font-size:1.5rem; font-weight:800; color:#fff; margin-bottom:8px;">Season 2</h3>
+            <div style="display:inline-block; background:rgba(201,162,39,0.15); border:1px solid var(--bk-gold-lt); border-radius:50px; padding:3px 14px; font-size:11px; font-weight:700; color:var(--bk-gold); margin-bottom:12px;">2 of 12 events completed</div>
+            <p style="color:rgba(255,255,255,0.7); font-size:14px; line-height:1.7; margin-bottom:20px;">Three thematic tracks across 12 months: growth, wellness, and sustainability for the communities we serve.</p>
+            <div class="sp-links">
+              <span>🌱 Growth &amp; Skill — Mar–Jun 2026</span>
+              <span>💪 Health &amp; Wellness — Jul–Nov 2026</span>
+              <span>♻️ Green &amp; Social Impact — Dec 2026–Feb 2027</span>
+            </div>
+            <a href="season2.html" class="sp-cta">Explore Season 2 →</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ======= Timeline — Our Journey ======= -->
+  <section id="history">
+
+    <!-- Background photos -->
+    <div style="position:absolute; inset:0; z-index:0;">
+      <img class="tl-bg-img" src="assets/img/season2/rodeo-s2-1/r1-2.jpg" alt="">
+      <img class="tl-bg-img" src="assets/img/season1/rodeo/rodeo%207/BKRodeo7-24.jpg" alt="">
+      <img class="tl-bg-img" src="assets/img/season2/rodeo-s2-2/r2-3.jpg" alt="">
+    </div>
+
+    <!-- Edge fades -->
+    <div class="tl-fade-l"></div>
+    <div class="tl-fade-r"></div>
+
+    <!-- Content -->
+    <div class="container" style="position:relative; z-index:3;">
+      <div class="bk-section-title" data-aos="fade-up">
+        <span class="eyebrow">Our Journey</span>
+        <h2>Every Event, <span class="accent">One Mission</span></h2>
+        <p>From Rodeo #1 to Season 2, every visit is a step closer to the change we believe in.</p>
       </div>
     </div>
 
-  </footer><!-- End Footer -->
-  <!-- End Footer -->
+    <div class="timeline-carousel-wrap" style="position:relative; z-index:3;">
+      <div class="timeline-track-5" id="tl5Track"></div>
+      <div class="tl5-arrows">
+        <button class="tl5-btn" id="tl5Prev" aria-label="Previous">
+          <i class="bi bi-arrow-left"></i>
+        </button>
+        <span class="tl5-progress" id="tl5Progress"></span>
+        <button class="tl5-btn" id="tl5Next" aria-label="Next">
+          <i class="bi bi-arrow-right"></i>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======= Stats ======= -->
+  <section class="stats-counter-bk">
+    <div class="container">
+      <div class="row gy-4">
+
+        <div class="col-lg-3 col-md-6" data-aos="zoom-in">
+          <div class="stats-item">
+            <span data-purecounter-start="0" data-purecounter-end="57" data-purecounter-duration="2" class="purecounter"></span>
+            <p>Members</p>
+          </div>
+        </div>
+
+        <div class="col-lg-3 col-md-6" data-aos="zoom-in" data-aos-delay="100">
+          <div class="stats-item">
+            <span data-purecounter-start="0" data-purecounter-end="22" data-purecounter-duration="2" class="purecounter"></span>
+            <p>Events Completed</p>
+          </div>
+        </div>
+
+        <div class="col-lg-3 col-md-6" data-aos="zoom-in" data-aos-delay="200">
+          <div class="stats-item">
+            <span data-purecounter-start="0" data-purecounter-end="28726" data-purecounter-duration="2" class="purecounter"></span>
+            <p>Hours</p>
+          </div>
+        </div>
+
+        <div class="col-lg-3 col-md-6" data-aos="zoom-in" data-aos-delay="300">
+          <div class="stats-item">
+            <span data-purecounter-start="0" data-purecounter-end="734" data-purecounter-duration="1" class="purecounter"></span>
+            <p>Followers</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ======= Gallery: Photo Slideshow + Orphanage Maps ======= -->
+  <section id="gallery" style="padding:80px 0 0; background:var(--bk-bg);">
+
+    <div class="container" data-aos="fade-up">
+      <div class="bk-section-title">
+        <span class="eyebrow">From the Field</span>
+        <h2>Moments from <span class="accent">Every Visit</span></h2>
+        <p>Photo documentation from our outreach events across Jakarta.</p>
+      </div>
+    </div>
+
+    <!-- Full-width photo slideshow -->
+    <div class="photo-slider-section" data-aos="fade-up" data-aos-delay="80">
+      <div class="swiper" id="photoSlider">
+        <div class="swiper-wrapper">
+
+          <div class="swiper-slide"><img src="assets/img/season2/rodeo-s2-1/r1-1.jpg" alt="Season 2 Rodeo 1"></div>
+          <div class="swiper-slide"><img src="assets/img/season2/rodeo-s2-1/r1-2.jpg" alt="Season 2 Rodeo 1"></div>
+          <div class="swiper-slide"><img src="assets/img/season2/rodeo-s2-1/r1-3.jpg" alt="Season 2 Rodeo 1"></div>
+          <div class="swiper-slide"><img src="assets/img/season2/rodeo-s2-1/r1-4.jpg" alt="Season 2 Rodeo 1"></div>
+          <div class="swiper-slide"><img src="assets/img/season2/rodeo-s2-1/r1-5.jpg" alt="Season 2 Rodeo 1"></div>
+          <div class="swiper-slide"><img src="assets/img/season2/rodeo-s2-2/r2-1.jpg" alt="Season 2 Rodeo 2"></div>
+          <div class="swiper-slide"><img src="assets/img/season2/rodeo-s2-2/r2-2.jpg" alt="Season 2 Rodeo 2"></div>
+          <div class="swiper-slide"><img src="assets/img/season2/rodeo-s2-2/r2-3.jpg" alt="Season 2 Rodeo 2"></div>
+          <div class="swiper-slide"><img src="assets/img/season2/rodeo-s2-2/r2-4.jpg" alt="Season 2 Rodeo 2"></div>
+          <div class="swiper-slide"><img src="assets/img/season2/rodeo-s2-2/r2-5.jpg" alt="Season 2 Rodeo 2"></div>
+          <div class="swiper-slide"><img src="assets/img/season1/rodeo/rodeo%2010/DSC08193.JPG" alt="Rodeo 10"></div>
+          <div class="swiper-slide"><img src="assets/img/season1/rodeo/rodeo%2010/DSC08213.JPG" alt="Rodeo 10"></div>
+          <div class="swiper-slide"><img src="assets/img/season1/rodeo/rodeo%2010/DSC08236.JPG" alt="Rodeo 10"></div>
+          <div class="swiper-slide"><img src="assets/img/season1/rodeo/rodeo%2010/rodeo-10.jpg" alt="Rodeo 10"></div>
+          <div class="swiper-slide"><img src="assets/img/season1/rodeo/rodeo%2011/DSC08395.JPG" alt="Rodeo 11"></div>
+          <div class="swiper-slide"><img src="assets/img/season1/rodeo/rodeo%2011/DSC08414.JPG" alt="Rodeo 11"></div>
+          <div class="swiper-slide"><img src="assets/img/season1/rodeo/rodeo%2011/DSC08427.JPG" alt="Rodeo 11"></div>
+          <div class="swiper-slide"><img src="assets/img/season1/rodeo/rodeo%2011/DSC08438.JPG" alt="Rodeo 11"></div>
+          <div class="swiper-slide"><img src="assets/img/season1/rodeo/rodeo%2011/20251217_175452.jpg" alt="Rodeo 11"></div>
+          <div class="swiper-slide"><img src="assets/img/season1/rodeo/rodeo%207/BKRodeo7-24.jpg" alt="Rodeo 7"></div>
+          <div class="swiper-slide"><img src="assets/img/season1/rodeo/rodeo%207/BKRodeo7-38.jpg" alt="Rodeo 7"></div>
+          <div class="swiper-slide"><img src="assets/img/season1/rodeo/rodeo%207/BKRodeo7-48.jpg" alt="Rodeo 7"></div>
+          <div class="swiper-slide"><img src="assets/img/season1/rodeo/rodeo%207/DSC00052.JPG" alt="Rodeo 7"></div>
+          <div class="swiper-slide"><img src="assets/img/season1/rodeo/rodeo%207/DSC00075.JPG" alt="Rodeo 7"></div>
+          <div class="swiper-slide"><img src="assets/img/season1/rodeo/rodeo%207/rodeo-7.jpg" alt="Rodeo 7"></div>
+          <div class="swiper-slide"><img src="assets/img/season1/rodeo/rodeo%209/rodeo-9.jpg" alt="Rodeo 9"></div>
+          <div class="swiper-slide"><img src="assets/img/season1/rodeo/rodeo%209/4B23847A-FAF4-43B8-A505-42BC7A818E73.jpg" alt="Rodeo 9"></div>
+          <div class="swiper-slide"><img src="assets/img/season1/rodeo/rodeo%209/F1A9A79B-95F8-467F-B60B-83F986184D92.jpg" alt="Rodeo 9"></div>
+          <div class="swiper-slide"><img src="assets/img/season1/rodeo/rodeo%208/DSC08826.JPG" alt="Rodeo 8"></div>
+          <div class="swiper-slide"><img src="assets/img/season1/rodeo/rodeo%208/rodeo-8.jpg" alt="Rodeo 8"></div>
+          <div class="swiper-slide"><img src="assets/img/season1/rodeo/rodeo%206/IMG_0805.JPG" alt="Rodeo 6"></div>
+          <div class="swiper-slide"><img src="assets/img/season1/rodeo/rodeo%206/IMG_0812.JPG" alt="Rodeo 6"></div>
+          <div class="swiper-slide"><img src="assets/img/season1/rodeo/rodeo%206/rodeo-6.jpg" alt="Rodeo 6"></div>
+          <div class="swiper-slide"><img src="assets/img/season1/rodeo/rodeo%205/rodeo-5.jpg" alt="Rodeo 5"></div>
+          <div class="swiper-slide"><img src="assets/img/season1/concert/fotokonser.jpg" alt="Charity Concert"></div>
+          <div class="swiper-slide"><img src="assets/img/season1/youngknights/Law%20School%20%23101/yk-law.jpg" alt="Young Knights Law"></div>
+          <div class="swiper-slide"><img src="assets/img/season1/youngknights/medicine/yk-medicine.jpg" alt="Young Knights Medicine"></div>
+
+        </div>
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-pagination"></div>
+      </div>
+    </div>
+
+    <!-- Orphanage Maps -->
+    <div class="container" style="padding-top:60px; padding-bottom:80px;">
+
+      <div class="bk-section-title" data-aos="fade-up" style="text-align:left; margin-bottom:32px;">
+        <span class="eyebrow">Where We Go</span>
+        <h2>Orphanages <span class="accent">We've Visited</span></h2>
+        <p>Select an orphanage to view its location.</p>
+      </div>
+
+      <div class="row gy-0 align-items-stretch" data-aos="fade-up" data-aos-delay="100">
+        <div class="col-lg-4 col-md-5">
+          <div class="orphanage-list-wrap" id="orphanageList"></div>
+        </div>
+        <div class="col-lg-8 col-md-7">
+          <iframe id="orphanageMap"
+            src="https://maps.google.com/maps?q=Panti+Asuhan+Parapattan+Jakarta&output=embed"
+            allowfullscreen loading="lazy"
+            title="Orphanage Location Map">
+          </iframe>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ======= Supporters =======
+  <section id="supporters" class="supporters-section">
+    <div class="container">
+
+      <div class="bk-section-title" data-aos="fade-up">
+        <span class="eyebrow">Thank You</span>
+        <h2>Our <span class="accent">Supporters</span></h2>
+        <p>The Bright Knight Foundation is made possible by the generosity of our donors and partners.</p>
+      </div>
+
+      <div class="row gy-4 justify-content-center" data-aos="fade-up" data-aos-delay="100">
+        <div class="col-6 col-md-3 col-lg-2">
+          <div class="supporter-slot"><i class="bi bi-building" style="font-size:1.5rem; margin-bottom:6px;"></i><br>Partner</div>
+        </div>
+        <div class="col-6 col-md-3 col-lg-2">
+          <div class="supporter-slot"><i class="bi bi-building" style="font-size:1.5rem; margin-bottom:6px;"></i><br>Partner</div>
+        </div>
+        <div class="col-6 col-md-3 col-lg-2">
+          <div class="supporter-slot"><i class="bi bi-building" style="font-size:1.5rem; margin-bottom:6px;"></i><br>Partner</div>
+        </div>
+        <div class="col-6 col-md-3 col-lg-2">
+          <div class="supporter-slot"><i class="bi bi-building" style="font-size:1.5rem; margin-bottom:6px;"></i><br>Partner</div>
+        </div>
+        <div class="col-6 col-md-3 col-lg-2">
+          <div class="supporter-slot"><i class="bi bi-building" style="font-size:1.5rem; margin-bottom:6px;"></i><br>Partner</div>
+        </div>
+        <div class="col-6 col-md-3 col-lg-2">
+          <div class="supporter-slot"><i class="bi bi-building" style="font-size:1.5rem; margin-bottom:6px;"></i><br>Partner</div>
+        </div>
+      </div>
+
+      <p class="text-center mt-4" style="font-size:13px; color:var(--bk-muted);">
+        Want to support us? <a href="donate.html" style="color:var(--bk-gold-dk); font-weight:600;">Donate or partner with us →</a>
+      </p>
+
+    </div> -->
+  <!-- </section> -->
+
+  <!-- ======= Donate ======= -->
+  <section id="donate" class="donate-section-bk">
+    <div class="container">
+      <div class="row align-items-start gy-5">
+
+        <div class="col-lg-6" data-aos="fade-right">
+          <span class="eyebrow" style="color:var(--bk-gold-lt); font-size:11px; font-weight:700; letter-spacing:3px; text-transform:uppercase; display:block; margin-bottom:10px;">Support Us</span>
+          <h2>Help Us Reach<br>The Next <span style="color:var(--bk-gold);">Orphanage</span></h2>
+          <p class="donate-sub">Every donation, big or small, goes directly towards supplies, transport, and activities for the children we visit.</p>
+
+          <div class="donate-event-card">
+            <div class="event-eyebrow">Next Event: Season 2 Track 2</div>
+            <h4>Health &amp; Wellness Rodeo</h4>
+            <p>
+              Coming July 2026, our next Rodeo will focus on health education and mental well-being for orphanage children.
+              We need your support for food supplies, transport, and workshop materials.
+            </p>
+          </div>
+
+          <a href="donate.html" class="btn-bk-primary">
+            <i class="bi bi-heart-fill"></i> Donate Now
+          </a>
+        </div>
+
+        <div class="col-lg-5 offset-lg-1" data-aos="fade-left">
+          <div class="donate-qr-box">
+            <div class="qr-title">Scan to Donate via QRIS</div>
+            <div style="text-align:center; margin-bottom:24px;">
+              <img src="assets/img/QRIS%20TBKF.jpeg" alt="QRIS Donation Code" style="width:100%; max-width:240px; border-radius:12px; border:1px solid #eee; box-shadow:0 4px 16px rgba(0,0,0,0.08);">
+              <div style="margin-top:10px; font-size:12px; color:var(--bk-muted); line-height:1.6;">Compatible with GoPay, OVO, Dana, ShopeePay,<br>BCA Mobile, Mandiri, BRI, and all QRIS apps</div>
+            </div>
+            <div class="bank-info">
+              <p><strong>Email:</strong> thebrightknightfoundation@gmail.com</p>
+              <p><strong>Instagram:</strong> <a href="https://instagram.com/brightknights.ina" target="_blank" style="color:var(--bk-gold-dk);">@brightknights.ina</a></p>
+              <p><strong>Phone:</strong> +62 813-1171-2221</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ======= Core Team Preview ======= -->
+  <section id="team-preview" class="team-section-bk" style="padding:80px 0;">
+    <div class="container">
+
+      <div class="bk-section-title" data-aos="fade-up">
+        <span class="eyebrow">The People</span>
+        <h2>Meet <span class="accent">Our Core Team</span></h2>
+        <p>TBKF 2026/2027 is driven by a passionate team of coordinators committed to making a difference.</p>
+      </div>
+
+      <div class="division-header" data-aos="fade-right">
+        <span class="div-label">Leadership</span>
+        <hr>
+      </div>
+
+      <div class="row gy-4 mb-5" data-aos="fade-up">
+        <div class="col-6 col-md-4 col-lg-2">
+          <div class="member-card core-card">
+            <img src="assets/img/team/core/denis.jpg" class="member-photo" alt="Denisson Setiawan Tanuraharja">
+            <div class="member-info">
+              <span class="role-badge">1st Chair</span>
+              <h5>Denisson Setiawan Tanuraharja</h5>
+            </div>
+          </div>
+        </div>
+        <div class="col-6 col-md-4 col-lg-2">
+          <div class="member-card core-card">
+            <img src="assets/img/team/core/dyo.jpg" class="member-photo" alt="Raffael Narendra Pramudyasatrio">
+            <div class="member-info">
+              <span class="role-badge">2nd Chair</span>
+              <h5>Raffael Narendra Pramudyasatrio</h5>
+            </div>
+          </div>
+        </div>
+        <div class="col-6 col-md-4 col-lg-2">
+          <div class="member-card core-card">
+            <img src="assets/img/team/core/patrick.jpg" class="member-photo" alt="Patrick Polana Kho">
+            <div class="member-info">
+              <span class="role-badge">Secretary I</span>
+              <h5>Patrick Polana Kho</h5>
+            </div>
+          </div>
+        </div>
+        <div class="col-6 col-md-4 col-lg-2">
+          <div class="member-card core-card">
+            <img src="assets/img/team/core/gmf.jpg" class="member-photo" alt="Gerald Matteo">
+            <div class="member-info">
+              <span class="role-badge">Secretary II</span>
+              <h5>Gerald Matteo</h5>
+            </div>
+          </div>
+        </div>
+        <div class="col-6 col-md-4 col-lg-2">
+          <div class="member-card core-card">
+            <img src="assets/img/team/core/hadriel.jpg" class="member-photo" alt="Hadriel Avanandra Sitorus">
+            <div class="member-info">
+              <span class="role-badge">Fundraising Coord.</span>
+              <h5>Hadriel Avanandra Sitorus</h5>
+            </div>
+          </div>
+        </div>
+        <div class="col-6 col-md-4 col-lg-2">
+          <div class="member-card core-card">
+            <img src="assets/img/team/members/enrico.jpg" class="member-photo" alt="Enrico Rudh">
+            <div class="member-info">
+              <span class="role-badge">Treasurer</span>
+              <h5>Enrico Rudh</h5>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="division-header" data-aos="fade-right">
+        <span class="div-label">Division Coordinators</span>
+        <hr>
+      </div>
+
+      <div class="row gy-4" data-aos="fade-up">
+        <div class="col-6 col-md-4 col-lg-2">
+          <div class="member-card core-card">
+            <img src="assets/img/team/core/naya.jpg" class="member-photo" alt="Kanaya Shira Dannelle">
+            <div class="member-info">
+              <span class="role-badge">Media &amp; Design</span>
+              <h5>Kanaya Shira Dannelle</h5>
+            </div>
+          </div>
+        </div>
+        <div class="col-6 col-md-4 col-lg-2">
+          <div class="member-card core-card">
+            <img src="assets/img/team/core/luna.jpg" class="member-photo" alt="Laurensia Luna Maheswariputri">
+            <div class="member-info">
+              <span class="role-badge">Public Relation</span>
+              <h5>Laurensia Luna Maheswariputri</h5>
+            </div>
+          </div>
+        </div>
+        <div class="col-6 col-md-4 col-lg-2">
+          <div class="member-card core-card">
+            <img src="assets/img/team/core/lewis-trananta.jpg" class="member-photo" alt="Lewis Trananta Liu">
+            <div class="member-info">
+              <span class="role-badge">Documentation</span>
+              <h5>Lewis Trananta Liu</h5>
+            </div>
+          </div>
+        </div>
+        <div class="col-6 col-md-4 col-lg-2">
+          <div class="member-card core-card">
+            <img src="assets/img/team/core/ben.jpg" class="member-photo" alt="Benedict Halim">
+            <div class="member-info">
+              <span class="role-badge">IT &amp; Website</span>
+              <h5>Benedict Halim</h5>
+            </div>
+          </div>
+        </div>
+        <div class="col-6 col-md-4 col-lg-2">
+          <div class="member-card core-card">
+            <img src="assets/img/team/core/lewis-tirta.jpg" class="member-photo" alt="Rafael Lewis Tirtaatmadja">
+            <div class="member-info">
+              <span class="role-badge">Event</span>
+              <h5>Rafael Lewis Tirtaatmadja</h5>
+            </div>
+          </div>
+        </div>
+        <div class="col-6 col-md-4 col-lg-2">
+          <div class="member-card core-card">
+            <img src="assets/img/team/core/sean.jpg" class="member-photo" alt="Sean Vincent Budiman">
+            <div class="member-info">
+              <span class="role-badge">Outreach I</span>
+              <h5>Sean Vincent Budiman</h5>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="text-center mt-5" data-aos="fade-up">
+        <a href="team.html" class="btn-bk-primary">
+          <i class="bi bi-people-fill"></i> View Full Team Directory
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ======= Footer ======= -->
+  <footer class="footer-bk">
+    <div class="container">
+      <div class="row gy-4">
+
+        <div class="col-lg-4">
+          <div class="footer-brand">
+            <h4>The Bright Knight Foundation</h4>
+            <p>Established 2020, restructured 2023.<br>Aspiring to inspire through community and education.</p>
+            <div class="social-links mt-3">
+              <a href="https://www.instagram.com/brightknights.ina/" target="_blank" title="Instagram"><i class="bi bi-instagram"></i></a>
+              <a href="https://id.linkedin.com/company/brightknights" target="_blank" title="LinkedIn"><i class="bi bi-linkedin"></i></a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-2 col-md-4">
+          <div class="footer-links">
+            <h5>Navigate</h5>
+            <ul>
+              <li><a href="#hero">Home</a></li>
+              <li><a href="#about">About Us</a></li>
+              <li><a href="#history">Our Journey</a></li>
+              <li><a href="#gallery">Gallery</a></li>
+              <li><a href="team.html">Team</a></li>
+              <li><a href="donate.html">Donate</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="col-lg-2 col-md-4">
+          <div class="footer-links">
+            <h5>Programs</h5>
+            <ul>
+              <li><a href="season1/rodeo.html">S1 Rodeo</a></li>
+              <li><a href="season1/concert.html">S1 Charity Concert</a></li>
+              <li><a href="season1/youngknights.html">S1 Young Knights</a></li>
+              <li><a href="season2/growth.html">S2 Growth &amp; Skill</a></li>
+              <li><a href="season2/health.html">S2 Health &amp; Wellness</a></li>
+              <li><a href="season2/green.html">S2 Green Impact</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-4">
+          <div class="footer-links">
+            <h5>Contact</h5>
+            <ul>
+              <li><a href="mailto:thebrightknightfoundation@gmail.com"><i class="bi bi-envelope me-2"></i>thebrightknightfoundation@gmail.com</a></li>
+              <li><a href="https://instagram.com/brightknights.ina" target="_blank"><i class="bi bi-instagram me-2"></i>@brightknights.ina</a></li>
+              <li><a href="tel:+6281311712221"><i class="bi bi-telephone me-2"></i>+62 813-1171-2221</a></li>
+              <li><span style="color:rgba(255,255,255,0.4); font-size:13px;"><i class="bi bi-geo-alt me-2"></i>Jakarta, Indonesia</span></li>
+            </ul>
+            <p style="color:rgba(255,255,255,0.35); font-size:12px; margin-top:12px; font-style:italic;">
+              "Aspiring to inspire others by GIVING back to the COMMUNITY. #KnightsOnThree"
+            </p>
+          </div>
+        </div>
+
+      </div>
+
+      <hr class="footer-divider">
+
+      <div class="d-flex flex-wrap justify-content-between align-items-center">
+        <p class="copyright mb-0">&copy; 2026 The Bright Knight Foundation. All Rights Reserved.</p>
+        <p class="copyright mb-0">Website by TBKF IT Division</p>
+      </div>
+
+    </div>
+  </footer>
 
   <a href="#" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
-
   <div id="preloader"></div>
 
-  <!-- Vendor JS Files -->
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="assets/vendor/aos/aos.js"></script>
   <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
   <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
   <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
-  <script src="assets/vendor/php-email-form/validate.js"></script>
-
-  <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
 
+  <!-- Photo Slideshow -->
+  <script>
+  (function () {
+    if (typeof Swiper === 'undefined') return;
+    new Swiper('#photoSlider', {
+      loop: true,
+      effect: 'fade',
+      fadeEffect: { crossFade: true },
+      speed: 900,
+      autoplay: { delay: 3200, disableOnInteraction: false },
+      navigation: {
+        nextEl: '#photoSlider .swiper-button-next',
+        prevEl: '#photoSlider .swiper-button-prev'
+      },
+      pagination: { el: '#photoSlider .swiper-pagination', clickable: true }
+    });
+  })();
+  </script>
+
+  <!-- Orphanage Map Switcher -->
+  <script>
+  (function () {
+    const orphanages = [
+      { name: 'Parapattan Orphanage',                   query: 'Panti+Asuhan+Parapattan+Jakarta',                         visits: 'Rodeo #1, #4, #5, #10' },
+      { name: 'Pondok Kasih Agape Orphanage',           query: 'Panti+Asuhan+Pondok+Kasih+Agape+Jakarta',                 visits: 'Rodeo #2, #11' },
+      { name: 'Dinas Sosial Rumah Perlindungan LU',     query: 'Dinas+Sosial+Rumah+Perlindungan+Lanjut+Usia+Jakarta',     visits: 'Rodeo #3' },
+      { name: 'Al-Andalusia Orphanage Foundation',      query: 'Yayasan+Yatim+Piatu+Al+Andalusia+Jakarta',                visits: 'Rodeo #6' },
+      { name: 'Yayasan Tri Asih',                       query: 'Yayasan+Tri+Asih+Jakarta',                                visits: 'Rodeo #7' },
+      { name: 'Annajah Orphanage',                      query: 'Panti+Asuhan+Annajah+Jakarta',                            visits: 'Rodeo #8' },
+      { name: 'Nurul Iman Mentas Orphanage',            query: 'Panti+Asuhan+Nurul+Iman+Mentas+Jakarta',                  visits: 'Rodeo #9' },
+      { name: 'Yayasan Bina Sosial Orphanage',          query: 'Yayasan+Bina+Sosial+Jakarta',                             visits: 'Rodeo #12' },
+    ];
+
+    const mapFrame = document.getElementById('orphanageMap');
+    const listEl   = document.getElementById('orphanageList');
+    if (!mapFrame || !listEl) return;
+    let activeIdx = 0;
+
+    function renderList() {
+      listEl.innerHTML = '';
+      orphanages.forEach(function (o, i) {
+        const btn = document.createElement('button');
+        btn.className = 'orphanage-btn' + (i === activeIdx ? ' active' : '');
+        btn.innerHTML = '<span class="ob-name">' + o.name + '</span><span class="ob-visits">' + o.visits + '</span>';
+        btn.addEventListener('click', function () {
+          activeIdx = i;
+          mapFrame.src = 'https://maps.google.com/maps?q=' + o.query + '&output=embed';
+          renderList();
+        });
+        listEl.appendChild(btn);
+      });
+    }
+
+    renderList();
+  })();
+  </script>
+
+  <!-- 5-Item Coverflow Timeline with Fade Transitions -->
+  <script>
+  (function () {
+    const events = [
+      { season:'S2', num:'S2 #2', name:'Digital Literacy Workshop',         date:'Apr 2026',     venue:'Season 2 · Track 1',             status:'done', link:'season2/growth.html' },
+      { season:'S2', num:'S2 #1', name:"Knight's Iftar — Ramadhan di Satu Meja", date:'15 Mar 2026', venue:'Season 2 · Track 1',         status:'done', link:'season2/growth.html' },
+      { season:'S1', num:'#12',   name:'Green Knights — Year End',           date:'17 Dec 2025',  venue:'Yayasan Bina Sosial',            status:'done', link:'season1/rodeo.html#rodeo-12' },
+      { season:'S1', num:'#11',   name:'Recycle Art Workshop',               date:'18 Oct 2025',  venue:'Pondok Kasih Agape',             status:'done', link:'season1/rodeo.html#rodeo-11' },
+      { season:'S1', num:'#10',   name:'Independence Day Lomba',             date:'16 Aug 2025',  venue:'Parapattan Orphanage',           status:'done', link:'season1/rodeo.html#rodeo-10' },
+      { season:'S1', num:'#9',    name:'Nurul Iman Rodeo',                   date:'3 Aug 2025',   venue:'Nurul Iman Mentas Orphanage',    status:'done', link:'season1/rodeo.html#rodeo-9' },
+      { season:'S1', num:'#8',    name:'Annajah Rodeo',                      date:'15 Jun 2025',  venue:'Annajah Orphanage',              status:'done', link:'season1/rodeo.html#rodeo-8' },
+      { season:'S1', num:'#7',    name:'Outreach — Yayasan Tri Asih',        date:'26 Apr 2025',  venue:'Yayasan Tri Asih',               status:'done', link:'season1/rodeo.html#rodeo-7' },
+      { season:'S1', num:'#6',    name:'Ramadan Iftar — Al-Andalusia',       date:'15 Mar 2025',  venue:'Al-Andalusia Foundation',        status:'done', link:'season1/rodeo.html#rodeo-6' },
+      { season:'S1', num:'#5',    name:'Parapattan Rodeo',                   date:'25 Jan 2025',  venue:'Parapattan Orphanage',           status:'done', link:'season1/rodeo.html#rodeo-5' },
+      { season:'S1', num:'#4',    name:'Christmas at Parapattan',            date:'Dec 2024',     venue:'Parapattan Orphanage',           status:'done', link:'season1/rodeo.html#rodeo-4' },
+      { season:'S1', num:'#3',    name:'Rodeo #3 — Service Month',           date:'2024',         venue:'RPLU Jakarta',                   status:'done', link:'season1/rodeo.html#rodeo-3' },
+      { season:'S1', num:'#2',    name:'Rodeo #2 — Art Month',               date:'2024',         venue:'Pondok Kasih Agape',             status:'done', link:'season1/rodeo.html#rodeo-2' },
+      { season:'S1', num:'#1',    name:'Rodeo #1 — The Beginning',           date:'2023',         venue:'Jakarta',                        status:'done', link:'season1/rodeo.html#rodeo-1' },
+    ];
+
+    const track    = document.getElementById('tl5Track');
+    const prevBtn  = document.getElementById('tl5Prev');
+    const nextBtn  = document.getElementById('tl5Next');
+    const progress = document.getElementById('tl5Progress');
+    if (!track) return;
+
+    let centerIdx  = 0;
+    let isAnimating = false;
+
+    function posClass(delta) {
+      if (delta === 0)          return 'tl-pos-center';
+      if (Math.abs(delta) === 1) return 'tl-pos-side1';
+      if (Math.abs(delta) === 2) return 'tl-pos-edge';
+      return 'tl-pos-hidden';
+    }
+
+    function render() {
+      track.innerHTML = '';
+      for (var i = Math.max(0, centerIdx - 2); i <= Math.min(events.length - 1, centerIdx + 2); i++) {
+        var e = events[i];
+        var delta = i - centerIdx;
+        var cls = posClass(delta);
+        var badgeHtml = '<span class="tl5-badge ' + (e.status === 'done' ? 'done' : 'upcoming') + '">' + (e.status === 'done' ? '✓ Completed' : '⏳ Upcoming') + '</span>';
+        var el = document.createElement('a');
+        el.href = e.link;
+        el.className = 'tl5-item ' + cls;
+        el.innerHTML = '<div class="tl5-card"><div class="tl5-season">' + (e.season === 'S2' ? 'Season 2' : 'Season 1') + '</div><div class="tl5-num">' + e.num + '</div><div class="tl5-name">' + e.name + '</div><div class="tl5-date">' + e.date + '</div><div class="tl5-venue">' + e.venue + '</div>' + badgeHtml + '</div>';
+        track.appendChild(el);
+      }
+      progress.textContent = (centerIdx + 1) + ' / ' + events.length;
+      prevBtn.disabled = centerIdx === 0;
+      nextBtn.disabled = centerIdx === events.length - 1;
+    }
+
+    function navigate(dir) {
+      if (isAnimating) return;
+      var next = centerIdx + dir;
+      if (next < 0 || next >= events.length) return;
+      isAnimating = true;
+      track.style.opacity = '0';
+      setTimeout(function () {
+        centerIdx = next;
+        render();
+        requestAnimationFrame(function () {
+          track.style.opacity = '1';
+          setTimeout(function () { isAnimating = false; }, 300);
+        });
+      }, 280);
+    }
+
+    prevBtn.addEventListener('click', function () { navigate(-1); });
+    nextBtn.addEventListener('click', function () { navigate(1); });
+
+    render();
+  })();
+  </script>
+
+  <!-- Mobile submenu toggle -->
+  <script>
+  document.addEventListener('DOMContentLoaded', function () {
+    document.querySelectorAll('.dropdown-submenu > a').forEach(function (link) {
+      link.addEventListener('click', function (e) {
+        if (window.innerWidth < 992) {
+          e.preventDefault();
+          var sub = this.nextElementSibling;
+          if (sub) sub.style.display = sub.style.display === 'block' ? 'none' : 'block';
+        }
+      });
+    });
+  });
+  </script>
+
 </body>
-
 </html>
-
-
-
-
-
